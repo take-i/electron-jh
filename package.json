@@ -8,10 +8,12 @@
   "license": "MIT",
   "scripts": {
     "start": "electron ./src",
-    "mac": "electron-packager ./src JunkHack --icon=assets/mac/icon_mac.icns --platform=darwin --arch=x64 --overwrite",
-    "win": "electron-packager ./src JunkHack --icon=assets/win/icon_win.icns --platform=win32 --arch=x64 --overwrite",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "mac": "electron-packager ./ JunkHack --icon=assets/mac/icon_mac.icns --platform=darwin --arch=x64 --overwrite",
+    "win": "electron-packager ./ JunkHack --icon=assets/win/icon_win.icns --platform=win32 --arch=x64 --overwrite",
+    "pack:mac": "electron-builder --mac --x64",
+    "pack:macm1": "electron-builder --mac --arm64",
+    "pack:win": "electron-builder --win --x64",
+    "dist": "electron-builder --dir"
   },
   "devDependencies": {
     "electron": "^16.2.4",
@@ -24,9 +26,9 @@
     "directories": {
       "output": "dist"
     },
+    "asar": false,
     "files": [
-      "src/**/*",
-      "node_modules/",
+      "src",
       "package.json"
     ],
     "mac": {
