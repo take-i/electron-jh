@@ -1,0 +1,9 @@
+{
+  "name": "junkhack",
+  "version": "1.0.0",
+  "description": "アリエクでポチったJunkHack",
+  "main": "main.js",
+  "keywords": [],
+  "author": "https://hack.gpl.jp/",
+  "license": "MIT"
+}

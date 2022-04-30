@@ -1,0 +1,47 @@
+{
+  "name": "junkhack",
+  "version": "1.0.0",
+  "description": "アリエクでポチったJunkHack",
+  "main": "src/main.js",
+  "keywords": [],
+  "author": "https://hack.gpl.jp/",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ./src",
+    "mac": "electron-packager ./src JunkHack --icon=assets/mac/icon_mac.icns --platform=darwin --arch=x64 --overwrite",
+    "win": "electron-packager ./src JunkHack --icon=assets/win/icon_win.icns --platform=win32 --arch=x64 --overwrite",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^16.2.4",
+    "electron-builder": "^23.0.3",
+    "electron-packager": "^15.5.1"
+  },
+  "private": true,
+  "build": {
+    "appId": "jp.gpl.hack",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/",
+      "package.json"
+    ],
+    "mac": {
+      "icon": "assets/mac/icon_mac.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "icon": "assets/win/icon_win.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
