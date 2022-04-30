@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	v６プラスで固定IPを設定できるルータを探せ！ へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Sat, 18 Jul 2020 18:48:12 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-87</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Sat, 18 Jul 2020 18:48:12 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=4947#comment-87</guid>
+
+					<description><![CDATA[JXCKさん
+
+遅レスになりました。そうですね。ご指摘の箇所から、無理っぽいのではと判断しました。しかし、このルータを触っていないので、できるかもしれませんね。
+
+匿名さん
+
+はい、ご指摘の通りですね。]]></description>
+			<content:encoded><![CDATA[<p>JXCKさん</p>
+<p>遅レスになりました。そうですね。ご指摘の箇所から、無理っぽいのではと判断しました。しかし、このルータを触っていないので、できるかもしれませんね。</p>
+<p>匿名さん</p>
+<p>はい、ご指摘の通りですね。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		匿名 より		</title>
+		<link>./../index.html#comment-86</link>
+
+		<dc:creator><![CDATA[匿名]]></dc:creator>
+		<pubDate>Sat, 18 Jul 2020 06:09:33 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=4947#comment-86</guid>
+
+					<description><![CDATA[訳あってV6プラス 固定IPの情報を集めていましたので、以下参考に願います。
+V6プラス：トンネル方式MAP-E／IPv4アドレスは動的／ポート開放制限有
+V6プラス 固定：トンネル方式 IPIP／IPv4アドレスは当然静的／ポート開放制限なし]]></description>
+			<content:encoded><![CDATA[<p>訳あってV6プラス 固定IPの情報を集めていましたので、以下参考に願います。<br />
+V6プラス：トンネル方式MAP-E／IPv4アドレスは動的／ポート開放制限有<br />
+V6プラス 固定：トンネル方式 IPIP／IPv4アドレスは当然静的／ポート開放制限なし</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Jxck より		</title>
+		<link>./../index.html#comment-85</link>
+
+		<dc:creator><![CDATA[Jxck]]></dc:creator>
+		<pubDate>Wed, 24 Jun 2020 03:30:36 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=4947#comment-85</guid>
+
+					<description><![CDATA[&#062; これは、ルータは固定IPで抜けられるがサーバを公開できないってことになりますね。
+
+これって、ルータの仕様の以下の部分をもとに判断されてますよね？
+
+&#062; ポートの開放（最大32エントリー）（※1）
+&#062; ※1 IPv4 over IPv6サービス利用時はご利用いただけません。
+
+これは、通常の MAP-E だとポートが開放できない(厳密には割当ポートであればできる気がするけど)、ということを言っていて、固定 IP を割り当てられていれば、任意のポートが開放できるんじゃないかと思ったのですがどうでしょうか？]]></description>
+			<content:encoded><![CDATA[<p>&gt; これは、ルータは固定IPで抜けられるがサーバを公開できないってことになりますね。</p>
+<p>これって、ルータの仕様の以下の部分をもとに判断されてますよね？</p>
+<p>&gt; ポートの開放（最大32エントリー）（※1）<br />
+&gt; ※1 IPv4 over IPv6サービス利用時はご利用いただけません。</p>
+<p>これは、通常の MAP-E だとポートが開放できない(厳密には割当ポートであればできる気がするけど)、ということを言っていて、固定 IP を割り当てられていれば、任意のポートが開放できるんじゃないかと思ったのですがどうでしょうか？</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

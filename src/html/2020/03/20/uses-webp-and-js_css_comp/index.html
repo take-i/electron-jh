@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>高速化その３：画像圧縮してみた！次世代画像フォーマット「WebP（ウェッピー）」を使う &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/5091/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=5091">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F03%2F20%2Fuses-webp-and-js_css_comp%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F03%2F20%2Fuses-webp-and-js_css_comp%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> </head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-5091 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-5091" class="post-5091 post type-post status-publish format-standard hentry category-classicpress category-wordpress category-speeding-up"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published updated" datetime="2020-03-20T10:16:47+09:00">2020年3月20日</time></a> </span><span class="posted-on">更新日:2020年3月20日</span> <span class="categories"> <a href="./../../../../category/classicpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">ClassicPress</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a>, <a href="./../../../../category/speeding-up/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">高速化</a></span>
+</div>
+<div class="flex"><h1 class="entry-title">高速化その３：画像圧縮してみた！次世代画像フォーマット「WebP（ウェッピー）」を使う</h1></div></header><div class="entry-content">
+<p>以前、スマホからのアクセスをもっと速くしたいなと思っていたのですが、高速化その３で手をつけることにしました！<br>まず、手をつける前の状態は以下です。</p>
+<p><img loading="lazy" style="display:block;margin-left:auto;margin-right:auto;" title="e383a2e3838fe38299e382a4e383abe382b5e382a4e38388e381aee9809fe5baa6e38292e6af94e8bc83e38197e381bee38197e38287e38186.png" src="./../../../../wp-content/uploads/2020/03/e383a2e3838fe38299e382a4e383abe382b5e382a4e38388e381aee9809fe5baa6e38292e6af94e8bc83e38197e381bee38197e38287e38186-1.png" alt="E383a2e3838fe38299e382a4e383abe382b5e382a4e38388e381aee9809fe5baa6e38292e6af94e8bc83e38197e381bee38197e38287e38186" width="599" height="278" border="0"></p>
+<p>はい、2.2秒かかっていたようです。レポートには、いろいろ書いてありますが画像の項目は以下のようにアドバイスされていました。</p>
+<blockquote><p>次世代フォーマットで画像を配信する<br>JPEG 2000、JPEG XR、WebP で画像をエンコードすると、読み込み時間が短くなり、モバ<br>イル通信のデータ量も少なくすることができます。フォールバック用に PNG 画像や JPEG 画<br>像も用意し、未対応ブラウザにはそちらを配信するようにしましょう。</p></blockquote>
+<p>ということで、WebP に変換することことにしました。変換には方向性として２つあり、１つはクラウドサービスでWebPに変換してもらうのを利用する方法。もう１つは、自サーバの機能を使ってWebP に変換する方法です。後者は、PHPがimagemagic をサポートしていてそのフォーマットにWebP がある場合に有効です。</p>
+<blockquote><p>phpinfo.phpにアクセス　→ サーバー設定のレポートを見る。<br>「imagick」項目の&nbsp;“ImageMagick supported formats&rdquo; という行に「webp」があればサポートしています。</p></blockquote>
+<p>現在はまだテストサーバで mamp でやっていますので、これはサポートしていないことがわかりました。自分でサーバを作るときは対応させる予定ですが、今のところは外部クラウドのWEBサービスを使って高速化がどのくらい進むか確認してみようと思います。</p>
+<p>パッと思いつくのは、https://tinypng.com/ のサービスです。</p>
+<p><img loading="lazy" style="display:block;margin-left:auto;margin-right:auto;" title="TinyPNG_–_Compress_PNG_images_while_preserving_transparency.png" src="./../../../../wp-content/uploads/2020/03/tinypng_e28093_compress_png_images_while_preserving_transparency.png" alt="TinyPNG Compress PNG images while preserving transparency" width="597" height="187" border="0"></p>
+<p>これをWordPress（ClassicPressでも利用可）で利用するPlugin があるので使うことにします。</p>
+<blockquote><p>Compress JPEG &amp; PNG images<br>https://ja.wordpress.org/plugins/tiny-compress-images/</p></blockquote>
+<p>Plugin を有効にして、API をゲット（月に500まで利用可）です。メディア設定の自動リサイズを無効にして、medium_large_size_h のパラメータも以下から0 にしておきます。</p>
+<blockquote><p>https://yourdomain/wp-admin/options.php</p></blockquote>
+<p>設定は以下のようにしておきました。</p>
+<p><img loading="lazy" style="display:block;margin-left:auto;margin-right:auto;" title="高速化_–_アリエクでポチった_JunkHack_と_Compress_JPEG___PNG_images_‹_アリエクでポチったJunkHack_&mdash;_ClassicPress.png" src="./../../../../wp-content/uploads/2020/03/e9ab98e9809fe58c96_e28093_e382a2e383aae382a8e382afe381a6e38299e3839be3829ae38381e381a3e3819f_junkhack_e381a8_compress_jpeg___png_images_e280b9_e382a2e383aae382a8e382afe381a6e38299e3839be.png" alt="高速化 アリエクでポチった JunkHack と Compress JPEG PNG images アリエクでポチったJunkHack ClassicPress" width="583" height="732" border="0"></p>
+<p>どのくらい高速化が進んだか確認してみましょう！</p>
+<p><img loading="lazy" style="display:block;margin-left:auto;margin-right:auto;" title="モバイルサイトの速度を比較しましょう.png" src="./../../../../wp-content/uploads/2020/03/e383a2e3838fe38299e382a4e383abe382b5e382a4e38388e381aee9809fe5baa6e38292e6af94e8bc83e38197e381bee38197e38287e38186-3.png" alt="モバイルサイトの速度を比較しましょう" width="597" height="269" border="0"></p>
+<p>結果、1.7秒です。0.5秒改善しましたね！</p>
+<p>あとついでなので、Autoptimize プラグンで JS と CSS の最適化をしておきました。これは有名なんで説明は省略。</p>
+<blockquote><p>Autoptimize<br>https://ja.wordpress.org/plugins/autoptimize/</p></blockquote>
+<p>結果、高速化その３では最終的に、1.2 秒にまで改善できました。</p>
+<p><img loading="lazy" style="display:block;margin-left:auto;margin-right:auto;" title="モバイルサイトの速度を比較しましょう.png" src="./../../../../wp-content/uploads/2020/03/e383a2e3838fe38299e382a4e383abe382b5e382a4e38388e381aee9809fe5baa6e38292e6af94e8bc83e38197e381bee38197e38287e38186-2.png" alt="モバイルサイトの速度を比較しましょう" width="598" height="268" border="0"></p>
+<p>あと、0.3秒ほど頑張れば１秒以下になって「速い」の部類に入るかと！　あとはサーバ側でがんばりましょうか。</p>
+<p>・・・高速化その４　に続く</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../18/adjust-the-theme-with-classicpress/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">高速化その２：ClassicPress を入れてテーマを調整</a></div>
+<div class="nav-next"><a href="./../../23/monitorcontrol/index.html" rel="next noopener noreferrer" data-wpel-link="internal">mac の画面輝度調整MonitorControlが便利すぎる！</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_f9042458c0fee7d42884c6f497291920.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>スマホ上に作った自宅サーバのWordPressで、テスト評価がほぼオールAになった！ &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/9466/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=9466">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F12%2Fwordpres_performance_test%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F12%2Fwordpres_performance_test%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-9466 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-9466" class="post-9466 post type-post status-publish format-standard has-post-thumbnail hentry category-blog category-wordpress category-speeding-up"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published updated" datetime="2020-09-12T04:51:21+09:00">2020年9月12日</time></a> </span><span class="posted-on">更新日:2020年9月12日</span> <span class="categories"> <a href="./../../../../category/blog/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Blog</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a>, <a href="./../../../../category/speeding-up/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">高速化</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2020/09/allA.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2020/09/allA.png 800w, ./../../../../wp-content/uploads/2020/09/allA-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">スマホ上に作った自宅サーバのWordPressで、テスト評価がほぼオールAになった！</h1>
+</div></header><div class="entry-content">
+<p>はい、ただ今引っ越し準備中でして、このブログをスマートフォン上に作ったWordPressサーバに引っ越しします。９月末か１０月頭予定で各種チューニングをやっていましたが、ついにスピードテスト系の評価サイトでほぼオールAを取ることに成功しました。</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_test_result_-_tokyo___jh_gpl_jp__-_09_12_20_01_36_13.png?w=952" alt="" class="wp-image-6034"></figure><p>いくつかある評価サイトの中では、ここが一番好きです。ここの計測サイトは東京リージョンもあり、また各種グラフが見やすくビデオプレビューまで付いて来ます。</p>
+<blockquote class="wp-block-quote">
+<p>WEBPAGETEST</p>
+<cite>https://www.webpagetest.org/</cite>
+</blockquote>
+<p>主な評価観点は、左から以下のようになっています。</p>
+<ol>
+<li>セキュリティ</li>
+<li>初期アクセスまでの時間</li>
+<li>Keep-alive通信がONか？</li>
+<li>圧縮転送されているか？</li>
+<li>イメージの圧縮はどうか？</li>
+<li>静的コンテンツがキャッシュされているか？</li>
+<li>CDNを使っているか？</li>
+</ol>
+<p>７番のCDNは一部、WordPressのをつかっていますが、全部は使っていないので、x　になっています。これはどうするかまだ迷っています。一度、国内のCDNをテストで使ってみようと思ったのですがうまく動作せずでした。まだ原因がわかっていません。</p>
+<p>　難易度的には、簡単なものから３・４・５・６・２・１・７で難しかったです。今回は、自分なりの考えをメモりつつ、１つづつ紹介していきたいなと思います。必ず正解っていう部分はないところでもあるので、あくまで自分はこんな対策と対応をしたよっていう感じです。いろいろツッコミどころはあるとは思いますが、何かあればコメントでお気軽にどうぞ。</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#nan_yi_duGKeep-alive_tong_xingaONka"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">難易度G・Keep-alive通信がONか？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#nan_yi_duFya_suo_zhuan_songsareteiruka"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">難易度F・圧縮転送されているか？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#nan_yi_duEimejino_ya_suohadouka"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">難易度E・イメージの圧縮はどうか？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#nan_yi_duDjing_dekontentsugakyasshusareteiruka"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">難易度D・静的コンテンツがキャッシュされているか？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#nan_yi_duCchu_qiakusesumadeno_shi_jian"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">難易度C・初期アクセスまでの時間</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#nan_yi_duBsekyuriti"> <span class="lwptoc_item_number">6</span> <span class="lwptoc_item_label">難易度B・セキュリティ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#nan_yi_duACDNwo_shitteiruka"> <span class="lwptoc_item_number">7</span> <span class="lwptoc_item_label">難易度A・CDNを使っているか？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#atogaki"> <span class="lwptoc_item_number">8</span> <span class="lwptoc_item_label">あとがき</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="nan_yi_duGKeep-alive_tong_xingaONka">難易度G・Keep-alive通信がONか？</span></h3>
+<p>これは apache を使おうが、nginx を使おうが最初からデフォルトONになっているので意識せずともAになると思います。今回は、最終的に nginx を使うことにしましたので、nginx.conf に以下を設定しています。タイムアウト時間は短いほうが良いと思います。でも、ここは突き詰めると難しい部分です。興味がある方は、以下などを一読されると良いかなと思います。</p>
+<blockquote class="wp-block-quote">
+<p>ぜんぶTIME_WAITのせいだ！</p>
+<cite>https://qiita.com/kuni-nakaji/items/c07004c7d9e5bb683bc2</cite>
+</blockquote>
+<pre class="wp-block-code"><code>http {
+::（省略）
+    keepalive_requests 100;
+    keepalive_timeout  3;
+::（省略）</code></pre>
+<p>termux 上の android OSでは、一般的なLinuxと違ってKernelパラメータも調整されているはずですので、ここが何が適切なのかを明確にするには root権限のあるスマホで termux を動かし負荷テストをしながら、各種TCPの状態遷移を見ていくのが正しい姿勢です。という意味では一番難しい部類ですが、今回はそこまで突っ込まないことにします。</p>
+<h3><span id="nan_yi_duFya_suo_zhuan_songsareteiruka">難易度F・圧縮転送されているか？</span></h3>
+<p>圧縮レベルは１でも十分という意見はありそうです。</p>
+<pre class="wp-block-code"><code>http {
+::（省略）
+    gzip  on;
+    gzip_vary       on;
+    gzip_proxied    any;
+    gzip_comp_level 6;
+    gzip_types      text/plain text/css text/xml text/javascript
+                    application/json application/javascript application/x-javascript
+                    application/xml application/rss+xml application/atom+xml
+                    image/svg+xml;
+::（省略）</code></pre>
+<h3><span id="nan_yi_duEimejino_ya_suohadouka">難易度E・イメージの圧縮はどうか？</span></h3>
+<p>これは今回は、ジェットパックのプラグインでwordpress のCDN側から画像が出ています。そこで適切に圧縮してくれているので簡単です。ただ、やりだすと奥が深いので、中間くらいの位置付けにしてあります。</p>
+<h3><span id="nan_yi_duDjing_dekontentsugakyasshusareteiruka">難易度D・静的コンテンツがキャッシュされているか？</span></h3>
+<p>これは、レスポンスヘッダに<strong>No max-age </strong>または<strong> expires</strong>をつければ解決します。具体的には、nginxの設定で以下を設定すればOKです。</p>
+<pre class="wp-block-code"><code>location ~* \.(jpg|jpeg|gif|png|css|js|swf|ico|pdf|svg|eot|ttf|woff)$ {
+    expires 60d;
+    add_header Cache-Control "public, no-transform";
+    access_log off;
+}</code></pre>
+<h3><span id="nan_yi_duCchu_qiakusesumadeno_shi_jian">難易度C・初期アクセスまでの時間</span></h3>
+<p>これは、WordPress側でキャッシュを作るのが一番最速です。各種プラグインがありますが、いろいろ試した結果、今の所はAutoptimizeに落ち着いています。</p>
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><a href="https://ja.wordpress.org/plugins/autoptimize/" target="_blank" rel="noopener noreferrer external" data-wpel-link="external"><img src="./../../../../wp-content/uploads/2020/09/autoptimize_e28093_wordpress_e38395e3829ae383a9e382afe38299e382a4e383b3___wordpress_org_e697a5e69cace8aa9e.png?w=743" alt="" class="wp-image-6040"></a></figure></div>
+<p>デフォルト設定でも十分効果はあります。迷ってる設定としては、Google フォントの削除　をするかしないかです。表示の綺麗さを取るか、お客様に快適にアクセスしてもらうのを取るか　ですね。あとは、ネットワーク的な速度の部分があります。今は InterLink の回線上にいますが、少し工夫してある部分といえば、常時利用する経路とは分離してあるくらいでしょうか？　WiFiの5G接続でもこのくらいは出ますよという参考値になればと思います。WiFiルーターの側にスマホ（サーバ）は置いてあります。距離を離すと応答速度が遅れます。</p>
+<h3><span id="nan_yi_duBsekyuriti">難易度B・セキュリティ</span></h3>
+<p>これが結構難しかったです。まず、WordPress の最新を使ってもjquery 1.12.4でした。これは脆弱性があるので、あげて置きたいところですが WordPressはIE8のことも考えて意図的に落としているようです（たぶん）。なので、以下プラグインで上書きしています。</p>
+<div class="wp-block-image is-style-default"><figure class="aligncenter size-large"><a href="https://wordpress.org/plugins/jquery-manager/" target="_blank" rel="noopener noreferrer external" data-wpel-link="external"><img src="./../../../../wp-content/uploads/2020/09/jquery_manager_for_wordpress_e28093_wordpress_plugin___wordpress_org.png?w=846" alt="" class="wp-image-6042"></a></figure></div>
+<p>しかし、これ以外もやることがあって以下のチェックサイトに行ったほうがわかりやすいかもしれません。各種セキュリー関連のhttpヘッダーを付与する必要があります。</p>
+<p>https://securityheaders.com/</p>
+<figure class="wp-block-image size-large is-style-default"><img src="./../../../../wp-content/uploads/2020/09/scan_results_for_https___jh_gpl_jp_.png?w=683" alt="" class="wp-image-6045"></figure><p>最初はここ、真っ赤でF判定だったです。</p>
+<p>対策としては、NGINXの設定でヘッダに以下をつければA判定となりクリアになりますが、まだiFrameの設定が未完結です。X-Frame-Optionsは、古く　Content-Security-Policy　の指定で行うのが良さそうです。frame-ancestors　を指定し組み込める参照元を制限する方法が良いということはわかっているのですが、まだ設定値が決まりません。A判定は取っていますが、内容がない状態です。</p>
+<pre class="wp-block-code"><code>add_header Strict-Transport-Security "max-age=15552000"; 
+add_header X-XSS-Protection "1; mode=block";
+add_header X-Frame-Options SAMEORIGIN;
+add_header X-Frame-Options "ALLOW-FROM https://www.youtube.com";
+add_header X-Content-Type-Options nosniff;
+add_header Content-Security-Policy "default-src * 'self' data: 'unsafe-inline' 'unsafe-eval' ;";
+add_header Referrer-Policy strict-origin always;
+add_header Permissions-Policy "fullscreen=() geolocation=()";</code></pre>
+<h3><span id="nan_yi_duACDNwo_shitteiruka">難易度A・CDNを使っているか？</span></h3>
+<p>ここは、DNSの向け先を変えたり、CDNのキャッシュをコントロールしたりする必要があり、運用とも関わる部分です。一度設定したのですが、うまく動作せずここは今の所一番の課題となっています。そもそも、月間５０００ページビューにも行かないこのサイトでCDNを導入する必要があるかどうか？　という点もありますが、一度やって見ないとわかりません。あと仕事ではなく、趣味なので無料のものしか使う気はありません。さて、どこがいいんでしょうかね？</p>
+<h3><span id="atogaki">あとがき</span></h3>
+<p>このサーバは、スマホで動いていてWiFiの無線で繋がっていますが、こんなちっさな筐体でもWordPressが動く、しかもA評価までもらえるなんて！　感動です。Termuxは最高のアプリですね。神アプリ認定です。</p>
+<p>　しかも、常時SSL対応ですよ。もちろん、無料のSSL証明書です。なんだか時代は刻々と進化していますね。</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../11/wildcard-domain-acme/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">Termux環境で動作するLet&#8217;s Encryptのワイルドカードドメインに対応した自動化ツールを探せ！</a></div>
+<div class="nav-next"><a href="./../../13/termux-acme-nginx/index.html" rel="next noopener noreferrer" data-wpel-link="internal">Termuxネイティブ環境でacme-nginxを使いワイルドカード証明書を自動取得！</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_6484edac0cbb53498caa41188c202bba.js"></script>
+</body>
+</html>

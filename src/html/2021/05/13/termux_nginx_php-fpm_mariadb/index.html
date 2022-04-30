@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>TermuxでNGINX+php-fpm+mariadbを動かす具体的な設定例 &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/10507/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=10507">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2021%2F05%2F13%2Ftermux_nginx_php-fpm_mariadb%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2021%2F05%2F13%2Ftermux_nginx_php-fpm_mariadb%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-10507 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-10507" class="post-10507 post type-post status-publish format-standard has-post-thumbnail hentry category-android category-linux category-wordpress"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published" datetime="2021-05-13T11:04:18+09:00">2021年5月13日</time><time class="updated" datetime="2021-07-04T21:16:53+09:00">2021年7月4日</time></a> </span><span class="posted-on">更新日:2021年7月4日</span> <span class="categories"> <a href="./../../../../category/android/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Android</a>, <a href="./../../../../category/linux/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Linux</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2021/05/termux_nginx_php-fpm_mariadb.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2021/05/termux_nginx_php-fpm_mariadb.png 800w, ./../../../../wp-content/uploads/2021/05/termux_nginx_php-fpm_mariadb-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">TermuxでNGINX+php-fpm+mariadbを動かす具体的な設定例</h1>
+</div></header><div class="entry-content">
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>今日もTermuxとWordPress触っていくよ〜！</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>今日は何するんですか〜？</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>一時的にPixel3からUmidigiF2へスマホサーバを移動しようと思って設定を纏めておいた！</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>設定の備忘録ですね！</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<p>さて、最近記事をサボりがちでしたがコメントにて、「TermuxでWordPressを動かす具体的な設定例」が見たいとご意見をいただきましたので、自分のメモがてら纏めておきます。</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#mazuhaUmidigiF2no_dian_chi_jiao_huan"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">まずはUmidigiF2の電池交換</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#Termuxwo_rureteapuriwo_she_ding"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">Termuxを入れてアプリを設定</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#NGINXno_she_ding"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">NGINXの設定</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#PHPno_she_ding"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">PHPの設定</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#NGINXphp-fpmno_dong_zuo_que_ren"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">NGINX+php-fpmの動作確認</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#mariaDBno_she_ding"> <span class="lwptoc_item_number">6</span> <span class="lwptoc_item_label">mariaDBの設定</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#WordPresswo_dongkashitemiru"> <span class="lwptoc_item_number">7</span> <span class="lwptoc_item_label">WordPressを動かしてみる</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#matome"> <span class="lwptoc_item_number">8</span> <span class="lwptoc_item_label">まとめ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#atogaki"> <span class="lwptoc_item_number">9</span> <span class="lwptoc_item_label">あとがき</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#zhe_zhenimesseji"> <span class="lwptoc_item_number">10</span> <span class="lwptoc_item_label">著者にメッセージ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#guan_lian_ji_shi"> <span class="lwptoc_item_number">11</span> <span class="lwptoc_item_label">関連記事</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="mazuhaUmidigiF2no_dian_chi_jiao_huan">まずはUmidigiF2の電池交換</span></h3>
+<blockquote class="wp-block-quote">
+<p>アリエク：UmidigiF2 バッテリー（購入時は1,283円）</p>
+<cite><a href="https://s.click.aliexpress.com/e/_A0Y07r" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">Link<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<p>UmidigiF2の電池が膨らんできましたので、アリエクで買ったUmidigiF2の電池に交換します。裏蓋は粘着テープで貼り付けられているだけなので、カードとかピックで分離します。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="549" height="393" src="./../../../../wp-content/uploads/2021/05/S20210511_001_jpg.png" alt="" class="wp-image-10508"></figure></div>
+<p>NFCやカメラ部分がプラスティック部品で固定されているので、周りのネジ１１本を外してバッテリーコネクタを外せるようにします。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large is-resized"><img loading="lazy" src="./../../../../wp-content/uploads/2021/05/2.png" alt="" class="wp-image-10509" width="549" height="411"></figure></div>
+<p>バッテリーの裏は透明なフィルムで剥がせるよう工夫されています。よく切れるテープとかは使われていませんでした。交換自体はPixel3とかと比べると非常に楽ですね。メンテナンス性は良いです。あとは両面テープを貼り直して裏フタを固定するだけです。</p>
+<p>　さてと、では面倒な設定まとめを書いておきます。</p>
+<h3><span id="Termuxwo_rureteapuriwo_she_ding">Termuxを入れてアプリを設定</span></h3>
+<p>Termuxについては、Google Play Storeから入れます。root化していなくても大丈夫ですが、ポート制限があるので1024ポート以上でないとWEBサーバは公開できない仕様です。</p>
+<blockquote class="wp-block-quote">
+<p>Termux：Google Play Store</p>
+<cite><a href="https://play.google.com/store/apps/details?id=com.termux&amp;hl=ja&amp;gl=US" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">URL<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<p>リモートから設定したほうが楽なので、最低限SSHを入れて起動しておきます。パスワードを設定しておきます。</p>
+<pre class="wp-block-code"><code>pkg update 
+pkg install openssh
+sshd
+passwd</code></pre>
+<p>あとはリモートからSSH接続して設定していきます。面倒でなければSSH鍵認証の設定をしておいてもOKです。</p>
+<pre class="wp-block-code"><code>ssh <em>termux_host_ip</em> -p 8022</code></pre>
+<p>他、アプリNGINX+php-fpm+mariadbも入れておきます。</p>
+<pre class="wp-block-code"><code>pkg install nginx php-fpm mariadb</code></pre>
+<p>どんなバージョンが入っているか確認しておきます。</p>
+<pre class="wp-block-code"><code>dpkg -l | egrep 'nginx|php|mariadb'</code></pre>
+<p>現時点、2021/05/11　時点では以下のバージョンになりました</p>
+<pre class="wp-block-code"><code>$ dpkg -l | egrep 'nginx|php|mariadb'
+ii  mariadb                    2:10.5.8       aarch64      A drop-in replacement for mysql server
+ii  nginx                      1.20.0         aarch64      Lightweight HTTP server
+ii  php                        8.0.6          aarch64      Server-side, HTML-embedded scripting language
+ii  php-fpm                    8.0.6          aarch64      FastCGI Process Manager for PHP</code></pre>
+<p>2020/10頃は、PHPが7.4.xだったのでver8系になったようです。PHP8の新機能は<a rel="noreferrer noopener external" href="https://qiita.com/rana_kualu/items/fe7998fbe773544d5d25" target="_blank" data-wpel-link="external" class="wpel-icon-right">ここ<span class="wpel-icon wpel-image wpel-icon-1"></span></a>参照。</p>
+<p>PHP7が良い場合は、<a rel="noreferrer noopener external" href="https://github.com/Termux-pod/termux-pod" target="_blank" data-wpel-link="external" class="wpel-icon-right">ここ<span class="wpel-icon wpel-image wpel-icon-1"></span></a>にdebfileがあるようです。Wordpressを動かす場合はPHP7.4.12のほうが無難かも。あとで検証してみます。</p>
+<p>　※追記</p>
+<p>上記のdebfile だとエラーになって動作しないようでしたので、ビルドしなおしました。<a href="./../../../06/01/termux-php8-to-php7/index.html" target="_blank" rel="noreferrer noopener" data-wpel-link="internal">ここ</a>参照</p>
+<h3><span id="NGINXno_she_ding">NGINXの設定</span></h3>
+<p>ホームディレクトリ以下にWEBのドキュメントROOTを作ります。どこでもいいのですが、termuxの$HOMEに作ります。自分の場合は、デフォルトのWEB ROOT（htdocs_default）と、hack.gpl.jp　ドメインのWEB ROOT（htdocs_nginx）を分離しています。</p>
+<pre class="wp-block-code"><code>$ echo $HOME
+/data/data/com.termux/files/home
+$ cd
+$pwd
+/data/data/com.termux/files/home
+$ mkdir htdocs_nginx
+$ mkdir htdocs_default</code></pre>
+<p>あと、SSL関連のファイルを格納しておくのでそれ専用のディレクトリも作っておきます。SSL関連は以下を参照</p>
+<blockquote class="wp-block-quote">
+<p>Termuxネイティブ環境でacme-nginxを使いワイルドカード証明書を自動取得！</p>
+<cite><a href="./../../../../2020/09/13/termux%e3%83%8d%e3%82%a4%e3%83%86%e3%82%a3%e3%83%96%e7%92%b0%e5%a2%83%e3%81%a7acme-nginx%e3%82%92%e4%bd%bf%e3%81%84%e3%83%af%e3%82%a4%e3%83%ab%e3%83%89%e3%82%ab%e3%83%bc%e3%83%89%e8%a8%bc%e6%98%8e/index.html" target="_blank" rel="noreferrer noopener" data-wpel-link="internal">LINK</a></cite>
+</blockquote>
+<pre class="wp-block-code"><code>$ cd
+$ mkdir -p ssl/gpl.jp/ 
+$ tree ssl
+ssl
+└── gpl.jp</code></pre>
+<p>NGINXの設定ファイルを作ります。conf.dディレクトリに分離して設定ファイルを保存するのでディレクトリも作っておきます。</p>
+<pre class="wp-block-code"><code>$ cd
+$ cd ../usr/etc/nginx/
+$ mkdir conf.d</code></pre>
+<p>オリジナルファイルをバックアップしておきます。UNIX系ではDiff取ったりして確認したりすることもあり、設定ファイルは消すより待避する癖をつけておいたほうが無難です。自分の場合は、_org　が元あったファイルという意味にしています。</p>
+<pre class="wp-block-code"><code>$ cp -p nginx.conf nginx.conf_org</code></pre>
+<p>今回の設定例では、root化してある端末なので、ポートは80と443にしています。root化していない場合は程よく読み替えてください。<br>nginx.conf　ファイルは以下のように設定しています。userは、termuxを入れた環境によって違いますので whoamiやidコマンドで確認しておきます。</p>
+<pre class="wp-block-code"><code>user  u0_a143;
+worker_processes  auto;
+worker_rlimit_nofile 4096;
+
+error_log  /data/data/com.termux/files/usr/var/log/nginx/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    use epoll;
+    multi_accept on;
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type text/plain;
+
+    charset            utf-8;
+    sendfile           on;
+    tcp_nopush         on;
+    tcp_nodelay        on;
+    server_tokens      off;
+    keepalive_requests 100;
+    keepalive_timeout  3;
+
+    server_names_hash_bucket_size 64;
+    types_hash_max_size 2048;
+    client_body_buffer_size 64k;
+    client_body_temp_path /data/data/com.termux/files/home/htdocs_default/tmp/client_body_temp 1 2;
+	
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /data/data/com.termux/files/usr/var/log/nginx/access.log  main;
+
+    gzip  on;
+    gzip_vary       on;
+    gzip_proxied    any;
+    gzip_comp_level 6;
+    gzip_types      text/plain text/css text/xml text/javascript
+                    application/json application/javascript application/x-javascript
+                    application/xml application/rss+xml application/atom+xml
+                    image/svg+xml image/x-icon;
+
+    ssl_session_timeout 30m;
+    ssl_session_cache   shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /data/data/com.termux/files/usr/etc/nginx/dhparam.pem;
+    ssl_ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256;
+
+    fastcgi_buffers         8 64k;
+    fastcgi_buffer_size     64k;
+    fastcgi_connect_timeout 60;
+    fastcgi_send_timeout    60;
+    fastcgi_read_timeout    300;
+
+    proxy_connect_timeout 60;
+    proxy_send_timeout    60;
+    proxy_read_timeout    120;
+    proxy_http_version    1.1;
+    proxy_cache_bypass    $http_upgrade;
+    proxy_set_header      Upgrade            $http_upgrade;
+    proxy_set_header      Connection         "upgrade";
+    proxy_set_header      Host               $host;
+    proxy_set_header      X-Real-IP          $remote_addr;
+    proxy_set_header      X-Forwarded-Host   $host;
+    proxy_set_header      X-Forwarded-Server $host;
+    proxy_set_header      X-Forwarded-For    $proxy_add_x_forwarded_for;
+    proxy_set_header      X-Forwarded-Proto  $scheme;
+    #proxy_set_header      X-Forwarded-Port   $server_port;
+    proxy_set_header      X-Forwarded-Port   443;
+    proxy_temp_path       /data/data/com.termux/files/usr/var/log/nginx/tmp;
+	
+    ## cache_pathについては別ファイルで設定する
+    include /data/data/com.termux/files/usr/etc/nginx/conf.d/cache_path.conf;
+		
+    server {
+        listen *:80 default_server;
+        server_name  _;
+		root   /data/data/com.termux/files/home/htdocs_default;
+
+		charset utf-8;
+
+		access_log  /data/data/com.termux/files/usr/var/log/nginx/host.access.log  combined;
+		error_log  /data/data/com.termux/files/usr/var/log/nginx/host.error.log warn;
+
+	    index index.html;
+	    include /data/data/com.termux/files/usr/etc/nginx/conf.d/common.conf;
+
+	}
+
+	include /data/data/com.termux/files/usr/etc/nginx/conf.d/hack.gpl.jp.conf;
+	include /data/data/com.termux/files/usr/etc/nginx/conf.d/gpl.jp.conf;
+	
+}</code></pre>
+<p>SSLのdhparamは、以下で出しておきます。この意味については<a href="https://qiita.com/r-ytakada/items/7ac9ce32c1ed4d01d505" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">ここ参照<span class="wpel-icon wpel-image wpel-icon-1"></span></a>。</p>
+<pre class="wp-block-code"><code>openssl dhparam -out /data/data/com.termux/files/usr/etc/nginx/dhparam.pem 2048</code></pre>
+<p>設定ファイルはインクルードしてあります。</p>
+<blockquote class="wp-block-quote"><p>conf.d/cache_path.conf<br>conf.d/common.conf<br>conf.d/hack.gpl.jp.conf<br>conf.d/gpl.jp.conf</p></blockquote>
+<p>まず、cache_path.conf の設定です。キャッシュディレクトリも作成しておきます。</p>
+<pre class="wp-block-code"><code>mkdir -p /data/data/com.termux/files/home/cache/hackgpljp
+mkdir -p /data/data/com.termux/files/home/cache/proxy.gpljp
+mkdir -p /data/data/com.termux/files/home/cache/wwwgpljp</code></pre>
+<p>cache_path.conf</p>
+<pre class="wp-block-code"><code>location ~ /. {
+
+## php-fpmでキャッシュを作る時
+fastcgi_cache_path /data/data/com.termux/files/home/cache/hackgpljp levels=1:2 keys_zone=gpljp:30m inactive=600m max_size=10g;
+## proxy経由でキャッシュを作る時
+proxy_cache_path /data/data/com.termux/files/home/cache/proxy.gpljp levels=1:2 keys_zone=proxy_gpljp:30m inactive=600m max_size=10g;
+
+# www.gpl.jp or gpl.jp
+fastcgi_cache_path /data/data/com.termux/files/home/cache/wwwgpljp levels=1:2 keys_zone=wwwgpljp:18m inactive=5m max_size=10g;</code></pre>
+<p>common.conf　は以下です。</p>
+<pre class="wp-block-code"><code>## .htpasswdとか . から始まるファイルへのアクセスは404で応答
+## 403だとそのファイルがあるのが外からわかってしまう
+location ~ /. {
+    return 404;
+}
+ 
+## ファイルが無くてもエラーログを出さない
+location ~ /(favicon.ico|apple-touch-icon-*) {
+    log_not_found  off;
+    access_log  off;
+}</code></pre>
+<p>このサイトのメイン設定 hack.gpl.jp.conf は以下です。</p>
+<pre class="wp-block-code"><code>server {
+    listen      80;
+    server_name jh.gpl.jp hack.gpl.jp hack.gpl.jp;
+
+    root   /data/data/com.termux/files/home/htdocs_nginx;
+
+    access_log  /data/data/com.termux/files/usr/var/log/nginx/hackgpljp.access.log  combined;
+    error_log  /data/data/com.termux/files/usr/var/log/nginx/hackgpljp.error.log warn;
+
+    client_max_body_size 20M;
+    ## キャッシュの設定：有効 -&gt; 0 無効 -&gt; 1
+    set $do_not_cache 0;
+    ## キーゾーン名
+    set $keys_zone gpljp;
+	
+    include /data/data/com.termux/files/usr/etc/nginx/conf.d/common.conf;
+    include /data/data/com.termux/files/usr/etc/nginx/conf.d/hackgpljp_wp.conf;
+    include /data/data/com.termux/files/usr/etc/nginx/conf.d/add_header.conf;
+}
+ 
+server {
+     listen      443 ssl http2;
+     server_name jh.gpl.jp hack.gpl.jp hack.gpl.jp;
+     root   /data/data/com.termux/files/home/htdocs_nginx;
+
+     access_log  /data/data/com.termux/files/usr/var/log/nginx/ssl_hackgpljp.access.log  combined;
+     error_log  /data/data/com.termux/files/usr/var/log/nginx/ssl_hackgpljp.error.log warn;
+
+     client_max_body_size 20M;
+     ## サイトのSSL証明書
+     ssl_certificate     /data/data/com.termux/files/home/ssl/gpl.jp/gpl.jp.crt;
+     ssl_certificate_key /data/data/com.termux/files/home/ssl/gpl.jp/gpl.jp.key;
+
+     ## キャッシュの設定：有効 -&gt; 0 無効 -&gt; 1
+     set $do_not_cache 0;
+
+     ## キーゾーン名
+     set $keys_zone gpljp;
+
+     ## 必要な設定ファイルを読み込み
+     include /data/data/com.termux/files/usr/etc/nginx/conf.d/common.conf;
+     include /data/data/com.termux/files/usr/etc/nginx/conf.d/hackgpljp_wp.conf;
+     include /data/data/com.termux/files/usr/etc/nginx/conf.d/add_header.conf;
+}</code></pre>
+<p>ここで、インクルードしている設定は以下です。</p>
+<blockquote class="wp-block-quote"><p>conf.d/hackgpljp_wp.conf<br>conf.d/add_header.conf</p></blockquote>
+<p>hackgpljp_wp.conf</p>
+<pre class="wp-block-code"><code>index index.php index.html;
+error_page 404 /index.php?error=404;
+ 
+# Deny all attempts to access hidden files such as .htaccess, .htpasswd, .DS_Store (Mac).
+# Keep logging the requests to parse later (or to pass to firewall utilities such as fail2ban)
+location ~ /. {
+    deny all;
+}
+ 
+# Deny access to any files with a .php extension in the uploads directory
+# Works in sub-directory installs and also in multisite network
+# Keep logging the requests to parse later (or to pass to firewall utilities such as fail2ban)
+location ~* /(?:uploads|files)/.*.php$ {
+    deny all;
+}
+
+set $is_mobile '';
+ 
+## スマートフォン用のキャッシュを作る為の判定処理
+## WordPress標準の wp_is_mobile() 関数と同じ判定処理
+if ($http_user_agent ~* '(Mobile|Android|Silk/|Kindle|BlackBerry|OperasMini|OperasMobi)') {
+    set $is_mobile 'mobile.';
+}
+
+set $do_not_cache 0;
+
+## GET メソッド以外はキャッシュを作成しない
+if ($request_method != GET) {
+    set $do_not_cache 1;
+}
+
+if ($query_string != "") {
+	set $do_not_cache 1;
+} 
+
+## キャッシュして欲しくないファイルは除外
+if ($request_uri ~* '/(wp-admin/|wp-login.php|wp-cron.php|xmlrpc.php|wp-json/|??feed|wp-json|sitemap.xml)') {
+    set $do_not_cache 1;
+}
+ 
+## ログイン済みのユーザー等、Cookie を持っていたらキャッシュを使わない
+if ($http_cookie ~* 'comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_no_cache|wordpress_logged_in') {
+    set $do_not_cache 1;
+}
+ 
+## 画像ファイル等はブラウザキャッシュを効かせる (60日)
+location ~* .(jpg|jpeg|gif|png|css|js|swf|ico|pdf|svg|eot|ttf|woff)$ {
+    expires 60d;
+    add_header Cache-Control "public, no-transform";
+    access_log off;
+}
+ 
+## リクエストは index.php に投げる
+location / {
+    try_files $uri $uri/ /index.php?$args;
+}
+ 
+## NginxとPHP-FPMはソケットで繋ぐ
+## HTTPステータスコードによって各キャッシュの有効期限を制御する
+location ~ .php {
+ 
+    try_files $uri /index.php;
+ 
+    include fastcgi_params;
+    fastcgi_pass  unix:/data/data/com.termux/files/usr/var/run/php-fpm.sock;
+    fastcgi_param SCRIPT_FILENAME  /data/data/com.termux/files/home/htdocs_nginx$fastcgi_script_name;
+ 
+    fastcgi_no_cache     $do_not_cache;
+    fastcgi_cache_bypass $do_not_cache;
+    fastcgi_cache        $keys_zone;
+    fastcgi_cache_key    $is_mobile$scheme://$host$request_uri;
+    fastcgi_cache_valid  200 5m;
+    fastcgi_cache_valid  301 302 1h;
+    fastcgi_cache_valid  404 1m;
+    fastcgi_cache_valid  any 1s;
+ 
+    fastcgi_hide_header X-Powered-By;
+}</code></pre>
+<p>add_header.conf は以下です。</p>
+<pre class="wp-block-code"><code>add_header Strict-Transport-Security "max-age=15552000"; 
+add_header X-XSS-Protection "1; mode=block";
+add_header X-Frame-Options SAMEORIGIN;
+
+add_header X-Content-Type-Options nosniff;
+add_header Content-Security-Policy "default-src * 'self' data: 'unsafe-inline' 'unsafe-eval' ;";
+add_header Referrer-Policy strict-origin always;
+add_header Permissions-Policy "fullscreen=() geolocation=()";
+add_header X-hacker "Hello. :-)";</code></pre>
+<h3><span id="PHPno_she_ding">PHPの設定</span></h3>
+<p>WordPressを動かすなら、少しPHPの上限を上げておくほうが無難です。termuxパッケージのPHPは、デフォルトファイルがないので、php.iniは以下に作ります。</p>
+<pre class="wp-block-code"><code>vi /data/data/com.termux/files/usr/lib/php.ini</code></pre>
+<pre class="wp-block-code"><code>[PHP]
+upload_max_filesize = 64M
+post_max_size = 64M
+memory_limit = 128M
+
+[mail function]
+sendmail_path = "/data/data/com.termux/files/usr/bin/msmtp -C /data/data/com.termux/files/home/.msmtprc -t"</code></pre>
+<p>iniで指定してある、phpからのメール送信設定は、msmtpを使っています。これは以下を参照。</p>
+<blockquote class="wp-block-quote">
+<p>Termuxからメールを送れるようにするには？</p>
+<cite>./2020/09/30/termux-smtp-client/</cite>
+</blockquote>
+<h3><span id="NGINXphp-fpmno_dong_zuo_que_ren">NGINX+php-fpmの動作確認</span></h3>
+<p>たくさんインクルードファイルがあって、わかり辛いかもですね。うまく動作しているか動作確認です。</p>
+<pre class="wp-block-code"><code>sudo nginx</code></pre>
+<p>root化してある場合は、nginxはroot で動作させないとポート80,443にバインドできません。1024以上であればtermuxの一般ユーザで起動させます。</p>
+<p>　起動時に何かエラーメッセージが出たらその対応をしていきます。</p>
+<h3><span id="mariaDBno_she_ding">mariaDBの設定</span></h3>
+<p>冒頭でmariaDBのパッケージはインストールしています。ここでは初期設定をします。基本的には以下でいけるはずです。</p>
+<blockquote class="wp-block-quote">
+<p>Termux Wiki : MariaDB</p>
+<cite><a href="https://wiki.termux.com/wiki/MariaDB" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">https://wiki.termux.com/wiki/MariaDB<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<p>mysqlに接続するコマンドは、リモートからではなくtermuxのスマホ本体から行ってください。リモートからだと、権限がらみでtermuxユーザでmysql接続、use mysql; ができません。</p>
+<p>mariadb を起動します。</p>
+<pre class="wp-block-code"><code>$ mysqld_safe &amp;</code></pre>
+<p>以下はリモートからではなくtermuxのスマホ本体から行ってください。</p>
+<pre class="wp-block-code"><code>mysql -u $(whoami)</code></pre>
+<p>リモートからDB Toolを使いたいので権限をつけておきます。<strong>リモートホストIP</strong>や、<strong>password</strong>などは程よく読み替えてください。</p>
+<pre class="wp-block-code"><code>use mysql;
+set password for 'root'@'localhost' = password('<span class="has-inline-color has-vivid-red-color">YOUR_ROOT_PASSWORD_HERE</span>');
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'<span class="has-inline-color has-vivid-red-color">192.168.1</span>.%' IDENTIFIED BY '<span class="has-inline-color has-vivid-red-color">YOUR_ROOT_PASSWORD_HERE</span>';
+flush privileges;
+quit;</code></pre>
+<p>リモートのGUIツールから接続テストをしておきます。以下は、macのTablePlusというツールの画面です。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="500" height="644" src="./../../../../wp-content/uploads/2021/05/Connection___.png" alt="" class="wp-image-10515"></figure></div>
+<p>termuxのsshユーザー名はなんでも良いです。ここでは無指定です。</p>
+<p>あと、デフォルトのcharacter-setを指定しておきたい場合は以下のようにします。</p>
+<pre class="wp-block-code"><code>vi /data/data/com.termux/files/usr/etc/my.cnf.d/server.cnf</code></pre>
+<pre class="wp-block-code"><code>$ cd
+[client]
+default-character-set = utf8mb4
+[mysqld]
+character-set-server = utf8mb4</code></pre>
+<p>utf8mb4は文字を1〜4byteで取り扱うので、こっちがよろしいかと。</p>
+<p>mariadbを再起動しておきます。</p>
+<pre class="wp-block-code"><code>$ ps axu | grep mariadb
+　※PIDを確認
+$ kill 30563
+$ mysqld_safe&amp;</code></pre>
+<h3><span id="WordPresswo_dongkashitemiru">WordPressを動かしてみる</span></h3>
+<p>ほどよくDBを作成して、WEB ROOTにWordpressを展開します。</p>
+<pre class="wp-block-code"><code>$ cd
+$ wget https://ja.wordpress.org/wordpress-5.7.1-ja.zip
+$ unzip wordpress-5.7.1-ja.zip
+$ mv wordpress/* htdocs_nginx/
+〜省略〜</code></pre>
+<p>以下、省略。PHP8環境でのWordPress動作確認は何か気がつけばネタにしたいと思います。</p>
+<h3><span id="matome">まとめ</span></h3>
+<p>今回、なんとなくわかったのは以下となります。</p>
+<p>・現状の設定だとコメント投稿がうまく動作しない<br>・ジェットパックのいいね　も動く時と動かない時がある<br>・TermuxのPHPパッケージが8になっていた<br>・WordPressがPHP8で問題ないか確認する<br>・とりあえず、wp5.7.1でプラグインが何もない状態であれば動いているように見える<br>・今、使っているプラグインやテーマを全部突っ込んでみて確認してみる</p>
+<h3><span id="atogaki">あとがき</span></h3>
+<p>サーバ設定とか、ほんとダルいですねー！　最近はインスタンスも１から作る機会なんてだいぶ減ってきているんで、こういう設定とかめんどくさいなーって感じました。AWSもGCCも、ずいぶん楽できる環境が整っているからそう感じるわけで。なんでもリモートできる、良い時代ですね。</p>
+<h3><span id="zhe_zhenimesseji">著者にメッセージ</span></h3>
+<p>間違いのご指摘など、コメントじゃなくて、個人的にやりとりしたい場合は<a class="c-link-text" href="./../../../../mail/index.html" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">こちらから</a>どうぞ。お返事が遅くなるときもありますが、ご了承を。</p>
+<p></p>
+<div class="related_content" style="clear:both;">
+<h3 class="widget-title"><span id="guan_lian_ji_shi">関連記事</span></h3>
+<ul class="related-posts">
+<li class="related-post"> <a href="./../../../06/01/termux-php8-to-php7/index.html" data-wpel-link="internal" rel="noopener noreferrer">TermuxでPHP7を使いたい！ PHP8からPHP7にして使う。</a>
+</li>
+<li class="related-post"> <a href="./../../../06/01/termux-pkg-update-error/index.html" data-wpel-link="internal" rel="noopener noreferrer">Termuxでpkg updateできなくなって困ってる人へ</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/09/11/wildcard-domain-acme/index.html" data-wpel-link="internal" rel="noopener noreferrer">Termux環境で動作するLet’s Encryptのワイルドカードドメインに対応した自動化ツールを探せ！</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/09/30/termux-smtp-client/index.html" data-wpel-link="internal" rel="noopener noreferrer">Termuxからメールを送れるようにするには？</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/10/05/pixel3android11rroot/index.html" data-wpel-link="internal" rel="noopener noreferrer">Pixel3・android11(R)正式リリース版でroot化！</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/10/03/termux-pixel3-unixbench/index.html" data-wpel-link="internal" rel="noopener noreferrer">備忘録：Termuxで、Pixel3のUnixBench</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/09/28/termux_huawei_p20_lite_unixbench/index.html" data-wpel-link="internal" rel="noopener noreferrer">備忘録：Termuxで、 HUAWEI P20 liteのUnixBench</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/10/08/termux-cpu-temp-thingspeak/index.html" data-wpel-link="internal" rel="noopener noreferrer">TermuxスマホのCPU温度をThingSpeakでリアルタイム・グラフにしてみた！</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/10/22/d-j-b-daemontools-termux/index.html" data-wpel-link="internal" rel="noopener noreferrer">D.J.BツールのdaemontoolsをTermuxで動かしてみたよ！</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/11/07/termux-dnsmasq/index.html" data-wpel-link="internal" rel="noopener noreferrer">内部DNSをTermuxのDNSMASQで動かす！</a>
+</li>
+</ul>
+</div>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../../04/22/2021-03-site24x7-sla/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">2021/03 site24x7 でのSLA状況・統計データ</a></div>
+<div class="nav-next"><a href="./../../20/isbn-10_4777521494/index.html" rel="next noopener noreferrer" data-wpel-link="internal">工学社 の本、androidの改造　に掲載されたよ！</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="word_balloon_user_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_user.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_skin_talk-css" href="./../../../../wp-content/plugins/word-balloon/css/skin/word_balloon_talk.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_inview_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_inview.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver" id="polyfill_IntersectionObserver-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_84a2606fca297d1a3a38ebd400eae2bd.js"></script>
+</body>
+</html>

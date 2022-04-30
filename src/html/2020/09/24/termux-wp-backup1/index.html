@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>Termuxネイティブ環境でWordPressのバックアップをどうするか考える。その１ &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/9631/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=9631">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F24%2Ftermux-wp-backup1%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F24%2Ftermux-wp-backup1%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-9631 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-9631" class="post-9631 post type-post status-publish format-standard has-post-thumbnail hentry category-android category-linux category-wordpress"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published" datetime="2020-09-24T03:23:58+09:00">2020年9月24日</time><time class="updated" datetime="2020-09-24T03:24:20+09:00">2020年9月24日</time></a> </span><span class="posted-on">更新日:2020年9月24日</span> <span class="categories"> <a href="./../../../../category/android/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Android</a>, <a href="./../../../../category/linux/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Linux</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2020/09/Termux-backup1.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2020/09/Termux-backup1.png 800w, ./../../../../wp-content/uploads/2020/09/Termux-backup1-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">Termuxネイティブ環境でWordPressのバックアップをどうするか考える。その１</h1>
+</div></header><div class="entry-content">
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>今日も自宅サーバいじるよ〜！</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>ほんと、好きねぇ〜。今日は何するんですか〜？</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>好きというか、まだ設定いろいろあってw。とりあえず、バックアップをどうしようかなと。</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>プラグインとか便利なのあるでしょ？あれじゃだめ？</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<p>はい、ぴーちゃんの言う通り便利なプラグインがあります。</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#chao_you_mingnaWordPressbakkuappupuraguin"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">超有名なWordPressバックアッププラグイン</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#zi_fennodomeinni_zi_fendeakusesudekinai_wen_ti"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">自分のドメインに自分でアクセスできない問題！</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#satedonna_fang_fagaaruno"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">さて、どんな方法があるの？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#bakkuappu_fang_zhentoTermux_huan_jingde_shiesounatsuru"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">バックアップ方針とTermux環境で使えそうなツール</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#matome"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">まとめ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#atogaki"> <span class="lwptoc_item_number">6</span> <span class="lwptoc_item_label">あとがき</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="chao_you_mingnaWordPressbakkuappupuraguin">超有名なWordPressバックアッププラグイン</span></h3>
+<p>この２つが特に有名じゃないでしょうか？</p>
+<p><strong>UpdraftPlus WordPress Backup Plugin</strong></p>
+<figure class="wp-block-image size-large"><a href="https://ja.wordpress.org/plugins/updraftplus/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer"><img loading="lazy" width="945" height="420" src="./../../../../wp-content/uploads/2020/09/f008a27d25c7dab83bc015058bc00dc5.png" alt="" class="wp-image-9632" srcset="./../../../../wp-content/uploads/2020/09/f008a27d25c7dab83bc015058bc00dc5.png 945w, ./../../../../wp-content/uploads/2020/09/f008a27d25c7dab83bc015058bc00dc5-768x341.png 768w" sizes="(max-width: 945px) 100vw, 945px"></a></figure><p>あと、これ。</p>
+<p><strong>BackWPup – WordPress Backup Plugin</strong></p>
+<figure class="wp-block-image size-large"><a href="https://ja.wordpress.org/plugins/backwpup/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer"><img loading="lazy" width="944" height="422" src="./../../../../wp-content/uploads/2020/09/299a223ae308b23fdf40437a56cc19a4.png" alt="" class="wp-image-9633" srcset="./../../../../wp-content/uploads/2020/09/299a223ae308b23fdf40437a56cc19a4.png 944w, ./../../../../wp-content/uploads/2020/09/299a223ae308b23fdf40437a56cc19a4-768x343.png 768w" sizes="(max-width: 944px) 100vw, 944px"></a></figure><p>前者のUpdraftPlusは、一度使ったことがあります。通常ならこれでバックアップはOKじゃないでしょうか。でも、今回はちょっと自宅サーバ構成に難があって、自分のドメインに自分でアクセスできない問題があります。</p>
+<h3><span id="zi_fennodomeinni_zi_fendeakusesudekinai_wen_ti">自分のドメインに自分でアクセスできない問題！</span></h3>
+<p>これはつまり、. や、. で自分自身にアクセスできないということです。こういう場合、WordPressのcronやジェットパックなどいろんな部分で問題が発生します。これは、wp-cliで診断すると以下のようになります。</p>
+<pre class="wp-block-code"><code>$ wp cron test
+Error: WP-Cron spawn failed with error: cURL error 28: Connection timed out after 3000 milliseconds</code></pre>
+<p>この、<strong>cURL error 28</strong> エラーはいろんなケースで出るのですが自分の場合は、登録されているURLに自分自身でアクセスできないことが原因です。この問題の根本は以下で紹介しています。まだ解消していません。</p>
+<blockquote class="wp-block-quote">
+<p>ポートフォワードの経路で、Uターン NATとかヘアピンNATが使えないルータの場合のあれこれ</p>
+<cite><a href="./../../07/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AF%E3%83%BC%E3%83%89%E3%81%AE%E7%B5%8C%E8%B7%AF%E3%81%A7%E3%80%81u%E3%82%BF%E3%83%BC%E3%83%B3-nat%E3%81%A8%E3%81%8B%E3%83%98%E3%82%A2%E3%83%94/index.html" target="_blank" rel="noreferrer noopener" data-wpel-link="internal">./2020/09/07/ポートフォワードの経路で、uターン-natとかヘアピ/</a></cite>
+</blockquote>
+<p>この解消はまた別の機会にやるとして、今回はこういう中途半端な環境で wp-cronが動作しない中、どうやってバックアップを行うかという感じです。</p>
+<h3><span id="satedonna_fang_fagaaruno">さて、どんな方法があるの？</span></h3>
+<p>王道としては、バックアップスクリプトを書いて、どこかクラウドストレージへコピーする方法です。データベースと、WordPress側で更新される画像など uploads以下にできるファイル、またカスタマイズするテーマなどもバックアップしておきたいです。それらをスクリプト中に記載してLinuxのcronで実行するという、<s>めんどくさい</s>やり方です。世の中、便利になりすぎてこういうスクリプト書くのが面倒になってきています。</p>
+<h3><span id="bakkuappu_fang_zhentoTermux_huan_jingde_shiesounatsuru">バックアップ方針とTermux環境で使えそうなツール</span></h3>
+<p>バックアップ方針は、やってる最中に気が変わるとして、下調べしてみると必要なツールは以下となりそうです。</p>
+<p>・クラウドへのバックアップ　<br>　→　GoogleDriveにバックアップしたい<br>　→　<strong>rclone</strong>がある！<br>・uploadsは差分バックアップしたい<br>　→　<strong>rsync</strong>がある<br>　→　Termuxもバイナリがある<br>・全部、スクリプトで書くと面倒<br>　→　<strong>wp-cli</strong>　を使って、<strong>プラグインと併用</strong>してみる<br>・DBは<strong>30日分保存</strong>、uploadsは<strong>差分保存</strong></p>
+<p>幸い、Termuxのバイナリにはこれらのツールが揃っていることがわかりました。rclone は、今回はじめて使います。</p>
+<blockquote class="wp-block-quote">
+<p>Rclone syncs your files to cloud storage</p>
+<cite><a href="https://rclone.org/" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">https://rclone.org/<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<h3><span id="matome">まとめ</span></h3>
+<p>今回、なんとなくわかったのは以下となります。</p>
+<p>・WordPressのcronは、自己のURLで自分自身をcurlで叩いている。<br>・それが出来ないと、cURL error 28のエラーが発生する。<br>・wp-cliで、wordpress の jobを linux の cron で叩けば動く<br>・クラウドへの保存ツールは、rcloneで解決</p>
+<h3><span id="atogaki">あとがき</span></h3>
+<p>まぁ、そもそもネットワーク構成をちゃんとやって自分自身をちゃんと参照できるようにしないとだめだよなーと。ただ、NATとポートフォワードをしていて内部LAN側に違うポートで提供している環境は他にもあると思うので、もしかすると誰かの参考になるかなとも。たぶん、その２へ続くと思います。</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../21/site24x7/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">無料の外部から監視するサービスを使って見た！site24x7</a></div>
+<div class="nav-next"><a href="./../../25/part2backupwordpressintermuxnativeenvironment/index.html" rel="next noopener noreferrer" data-wpel-link="internal">Termuxネイティブ環境でWordPressのバックアップをどうするか考える。その２</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="word_balloon_user_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_user.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_skin_talk-css" href="./../../../../wp-content/plugins/word-balloon/css/skin/word_balloon_talk.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_inview_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_inview.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver" id="polyfill_IntersectionObserver-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_84a2606fca297d1a3a38ebd400eae2bd.js"></script>
+</body>
+</html>

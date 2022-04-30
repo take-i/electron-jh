@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Arduino Nano互換機に書き込めないだと！ へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Sat, 23 Oct 2021 03:32:26 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		吉田　純造 より		</title>
+		<link>./../index.html#comment-131</link>
+
+		<dc:creator><![CDATA[吉田　純造]]></dc:creator>
+		<pubDate>Sat, 23 Oct 2021 03:32:26 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=10154#comment-131</guid>
+
+					<description><![CDATA[できました
+ありがとう]]></description>
+			<content:encoded><![CDATA[<p>できました<br />
+ありがとう</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

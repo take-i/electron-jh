@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>Rapid START CDNは諦めてJetpackプラグインのWordPressが提供しているCDNを使ってどうなるか検討してみる &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/5882/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=5882">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F05%2Fjetpack-cdn%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F05%2Fjetpack-cdn%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-5882 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-5882" class="post-5882 post type-post status-publish format-standard hentry category-blog"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published updated" datetime="2020-09-05T16:00:07+09:00">2020年9月5日</time></a> </span><span class="posted-on">更新日:2020年9月5日</span> <span class="categories"> <a href="./../../../../category/blog/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Blog</a></span>
+</div>
+<div class="flex"><h1 class="entry-title">Rapid START CDNは諦めてJetpackプラグインのWordPressが提供しているCDNを使ってどうなるか検討してみる</h1></div></header><div class="entry-content">
+<p>結局、Rapid START CDNは登録したけどもうまく反映できず、諦めました。手順通りにやっても、CNAMEを切り替え後に　Error 503 Backend Error　になるんですよね。結局、フェイスブックの問い合わせにもお返事がなかったので原因を追求することが難しくなりました。</p>
+<p>　ということで、CDNはとりあえず諦めようかなと思いますが、Jetpack　をまだ入れて試していませんでした。Jetpackには、ワードプレスが提供しているCDNが使えるようになります。説明は以下にあります。</p>
+<blockquote class="wp-block-quote">
+<p>Site Accelerator</p>
+<cite><em>JetpackのSite Acceleratorは、Jetpackが画像を最適化し、サーバーのグローバルネットワークから画像と静的ファイル（CSSやJavaScriptなど）を提供できるようにすることで、ページの読み込みを高速化します。</em></cite>
+</blockquote>
+<p>あと、Jetpackを入れるメリットとしては、WordPressのローカルアプリで、Macから投稿するときのブログ投稿ツールが使えるようになります。最近はこれを使っていたので、今後もこれを使おうとする場合は、Jetpackを入れないとだめなようです。</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/e382b5e382a4e38388e38292e8bfbde58aa0_e28094_wordpress_com.png?w=868" alt="" class="wp-image-5888"></figure><p>まぁ、違う投稿ツールを使えばいいんですが、慣れているんでこっちで出来れば良いかなと。CDNも使えるしね。</p>
+<p>以前検討した時は、Jetpackを入れると遅くなるっていうことがわかり外しましたが、あれはネット回線もサーバマシンも高速であったため、CDN使わなくても速かったからです。今度は、スマホサーバで動かしているし、回線もIPv4を使っているので、以前より速くありません。ちなみに、今はInterLink の PPoEのIP1固定を検討中で使っています。これは逆引きドメインを設定できるので良いなーと。またそれは別に紹介するとします。</p>
+<p>　ではJetpackを入れてみましょう。しかし、ClassicPressでは動作しないので、WordPress最新を入れる必要があります。面倒ですが入れ直して、Jetpackプラグイン設定。一応、同条件で計測しておきました。</p>
+<p>・Jetpackを入れる前のWordPress</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_test_details_-_tokyo___jh_gpl_jp__-_09_05_20_14_00_17.png?w=942" alt="" class="wp-image-5895"></figure><p>・Jetpackを導入直後のWordPress</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_test_details_-_tokyo___jh_gpl_jp__-_09_05_20_15_15_05.png?w=941" alt="" class="wp-image-5897"></figure><p>囲ってある部分が、Jetpackで変化があった部分ですが、レンダリング開始秒までは、Jetpack使用後もさほど代わりがありません。<s>まだこの時は</s>、最初のindex相当の部分は、CDN上ではないようです。JetpackでCDNになるのは、WordPress 共通で使うjquery.jsだったりの部分です。<br>※追記　ファーストアクセスの部分（上記でいえば、index相当の部分）は仕組み上CDNからのアクセスにはならないと思います。</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/jetpack_e280b9junkhack_e28094_wordpress.png?w=1024" alt="" class="wp-image-5899"></figure><p>設定はこのようにしています。もうちょっと様子見してみますか。あー、なんで画像が計測結果に出てないかわかりました！</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_screenshots_-_tokyo___jh_gpl_jp__-_09_05_20_15_15_05.png?w=601" alt="" class="wp-image-5901"></figure><p>上記２つの計測結果には、画像がまだエリア内に表示されていないので表示されなかったみたいです。</p>
+<p>違うページを計測してみたら、以下のように画像URLが変わっていました。</p>
+<pre class="wp-block-code"><code>https://i0.wp.com/jh.gpl.jp/wp-content/uploads/2020/08/e8b2bce3828ae4bb98e38191e3819fe794bbe5838f_2020_08_24_1_04.png?resize=496%2C1080</code></pre>
+<p id="block-f04e738f-bf26-47c7-a10f-a8ef7debe8e1">あーなるほどね。とりあえず、Jetpack入れて様子見してみます。</p>
+<p>WPのcdnから配信された画像データと、オリジナルのファイルサイズを比較してみると以下のように半分くらいになっています。</p>
+<pre class="wp-block-code"><code>$ ll
+：：
+-rw-r--r--@  1 junkhack  staff  776994  9  5 21:20 org.png
+-rw-r--r--@  1 junkhack  staff  281594  9  5 21:19 wpcdn.png</code></pre>
+<p>綺麗な画像で見せたい場合は、CDNから配信しないのがいいですね。ここで見せる画像なんかは、特にこだわりはないので問題ありませんが。</p>
+<p></p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../03/rapid-start-cdn/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">Rapid START CDNを試す！　が、ハマりどころいっぱい！</a></div>
+<div class="nav-next"><a href="./../../06/termux-apache2-php7-mariadb10/index.html" rel="next noopener noreferrer" data-wpel-link="internal">Termuxのapache2+php7+mariadb10 環境でwordpressの表示スコア</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_f9042458c0fee7d42884c6f497291920.js"></script>
+</body>
+</html>

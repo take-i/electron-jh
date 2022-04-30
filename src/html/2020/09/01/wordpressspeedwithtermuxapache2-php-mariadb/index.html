@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか のコメントのフィード" href="./feed/index.html">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/5823/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=5823">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F01%2Fwordpressspeedwithtermuxapache2-php-mariadb%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F01%2Fwordpressspeedwithtermuxapache2-php-mariadb%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> </head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-5823 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-5823" class="post-5823 post type-post status-publish format-standard hentry category-blog category-linux"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published updated" datetime="2020-09-01T02:59:00+09:00">2020年9月1日</time></a> </span><span class="posted-on">更新日:2020年9月1日</span> <span class="categories"> <a href="./../../../../category/blog/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Blog</a>, <a href="./../../../../category/linux/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Linux</a></span>
+</div>
+<div class="flex"><h1 class="entry-title">Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか</h1></div></header><div class="entry-content">
+<p>さて、今回はメモ程度ですが スマホUMIDIGI F2に、termuxでapache2とphp7とmariadb10を入れた環境にWordPress代替えのClassicPressを入れて動作させてみました。いろいろ課題が見えて来たのでメモしておきます。まずは、どのくらいの速度で表示されるか、視覚的に見ると以下になります。約1.8秒です。</p>
+<p><a href="https://www.webpagetest.org/video/view.php?id=200830_1626d4ffcc3e1d952ebf3b69ec30500fd1e9dd6a" target="_blank" rel="noopener noreferrer external" data-wpel-link="external"><img loading="lazy" class=" size-full wp-image-5848 aligncenter" src="./../../../../wp-content/uploads/2020/08/webpagetest_-_visual_comparison_-_aug_31__2020___jh_gpl_jp_-1.png" alt="WebPageTest_-_Visual_Comparison_-_Aug_31__2020___jh_gpl_jp_" width="405" height="329"></a></p>
+<p>&nbsp;</p>
+<p>これは、後ほど出て来ますが　https://www.webpagetest.org/　でのテスト結果です。ちょっと遅いですよね。まぁ、しかしスマホで動作していると思えば十分に速いかもしれません。</p>
+<p>まだ設定は未調整ですがhttp接続（SSLじゃない80接続）でのベンチマークです。コマンドラインでのapache ab　テストもやってみました。同時に100ユーザが、1ユーザーあたり10リクエストを発行した場合を想定しています。これは、一般的なhtmlアクセスに対するjsやcssや画像のアクセスかなと思います。まぁ、このブログはそんな人気じゃないので同時に10人くらいのアクセスで十分かもですがw</p>
+<p>サーバ側の状態は、ClassicPressをデフォルトで入れた状態です。テーマは、ClassicPressのTwentySixteenです。画像は出ない状態で全部テキストです。htmlやcssやjsやfontなど全部で、278 KBです。</p>
+<p>まず、ローカルのリモート（macos）から。</p>
+<blockquote><p class="p1"><span class="s1">$ ab -n 1000 -c 100 http://192.168.1.38:8080/</span></p></blockquote>
+<pre>Server Software:        Apache/2.4.46
+Server Hostname:        192.168.1.38
+Server Port:            8080
+
+Document Path:          /
+Document Length:        15825 bytes
+
+Concurrency Level:      100
+Time taken for tests:   <strong><span style="color:#ff0000;">78.390</span></strong> seconds
+Complete requests:      1000
+Failed requests:        <strong><span style="color:#ff0000;">0</span></strong>
+Total transferred:      16123000 bytes
+HTML transferred:       15825000 bytes
+Requests per second:    <strong><span style="color:#ff0000;">12.76</span></strong> [#/sec] (mean)
+Time per request:       7839.037 [ms] (mean)
+Time per request:       78.390 [ms] (mean, across all concurrent requests)
+Transfer rate:          200.86 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        1    4  15.5      1     410
+Processing:   490 7663 5599.2   6405   30174
+Waiting:      461 7317 5486.8   5962   30109
+Total:        494 7667 5599.1   6407   30175
+
+Percentage of the requests served within a certain time (ms)
+  50%   6407
+  66%   7733
+  75%   9622
+  80%  10952
+  90%  16804
+  95%  19520
+  98%  24822
+  99%  26571
+ 100%  30175 (longest request)</pre>
+<p>次は、GCPの東京リージョンからです。この経路は80←→8080にポート転送していますが、その差は感じない程度ですね。termux は、80ポートや443ポートでは運用できない制限がありますので、ルータで変換します。</p>
+<blockquote><p class="p1"><span class="s1">$ ab -n 1000 -c 100 http://jh.gpl.jp/</span></p></blockquote>
+<pre>Server Software: Apache/2.4.46
+Server Hostname: jh.gpl.jp
+Server Port: 80
+
+Document Path: /
+Document Length: 15742 bytes
+
+Concurrency Level: 100
+Time taken for tests: <strong><span style="color:#ff0000;">78.813</span></strong> seconds
+Complete requests: 1000
+Failed requests: <strong><span style="color:#ff0000;">0</span></strong>
+Total transferred: 16040000 bytes
+HTML transferred: 15742000 bytes
+Requests per second: <span style="color:#ff0000;"><strong>12.69</strong></span> [#/sec] (mean)
+Time per request: 7881.291 [ms] (mean)
+Time per request: 78.813 [ms] (mean, across all concurrent requests)
+Transfer rate: 198.75 [Kbytes/sec] received
+
+Connection Times (ms)
+min mean[+/-sd] median max
+Connect: 21 190 525.8 51 3058
+Processing: 707 7470 4143.1 7264 22358
+Waiting: 605 7100 4070.2 6790 22218
+Total: 804 7661 4221.0 7341 22409
+
+Percentage of the requests served within a certain time (ms)
+50% 7341
+66% 8008
+75% 8490
+80% 9059
+90% 14244
+95% 16246
+98% 20310
+99% 21250
+100% 22409 (longest request)</pre>
+<p>次はtermuxが動作しているローカルからです。</p>
+<blockquote><p class="p1"><span class="s1">$ ab -n 1000 -c 100 http://192.168.1.38:8080/</span></p></blockquote>
+<pre>Server Software: Apache/2.4.46
+Server Hostname: 192.168.1.38
+Server Port: 8080
+
+Document Path: /
+Document Length: 15825 bytes
+
+Concurrency Level: 100
+Time taken for tests: <strong><span style="color:#ff0000;">77.274</span></strong> seconds
+Complete requests: 1000
+Failed requests: <strong><span style="color:#ff0000;">0</span></strong>
+Total transferred: 16123000 bytes
+HTML transferred: 15825000 bytes
+Requests per second: <strong><span style="color:#ff0000;">12.94</span></strong> [#/sec] (mean)
+Time per request: 7727.448 [ms] (mean)
+Time per request: 77.274 [ms] (mean, across all concurrent requests)
+Transfer rate: 203.76 [Kbytes/sec] received
+
+Connection Times (ms)
+min mean[+/-sd] median max
+Connect: 1 1428 791.4 1531 3535
+Processing: 562 6046 2311.5 5785 16840
+Waiting: 515 4357 2249.9 3816 16085
+Total: 649 7474 2189.4 7356 17166
+
+Percentage of the requests served within a certain time (ms)
+50% 7356
+66% 8082
+75% 8376
+80% 8620
+90% 9861
+95% 11707
+98% 12754
+99% 13209
+100% 17166 (longest request)</pre>
+<p>ちなみに、ローカルのリモート（macos）からしか試していませんが、スマホの接続をWiFi接続を5Ghzではなく、2.4Ghzで接続した場合は以下でした。これ有線だとどうなるんでしょうかね。type-c と有線イーサネットは１つありますが、繋げても接続できなかったのでまだテストしていません。</p>
+<pre>Server Software: Apache/2.4.46
+Server Hostname: 192.168.1.38
+Server Port: 8080
+
+Document Path: /
+Document Length: 15825 bytes
+
+Concurrency Level: 100
+Time taken for tests: <span style="color:#ff0000;"><strong>84.280</strong></span> seconds
+Complete requests: 1000
+Failed requests: <strong><span style="color:#ff0000;">0</span></strong>
+Total transferred: 16123000 bytes
+HTML transferred: 15825000 bytes
+Requests per second: <strong><span style="color:#ff0000;">11.87</span></strong> [#/sec] (mean)
+Time per request: 8427.984 [ms] (mean)
+Time per request: 84.280 [ms] (mean, across all concurrent requests)
+Transfer rate: 186.82 [Kbytes/sec] received
+
+Connection Times (ms)
+min mean[+/-sd] median max
+Connect: 1 11 13.3 5 135
+Processing: 491 7692 4699.6 7107 25513
+Waiting: 443 7301 4611.2 6657 25511
+Total: 493 7703 4700.0 7139 25514
+
+Percentage of the requests served within a certain time (ms)
+50% 7139
+66% 8172
+75% 9108
+80% 10369
+90% 14578
+95% 18137
+98% 20897
+99% 22101
+100% 25514 (longest request)</pre>
+<p>多少、劣るようですがそこまで気にしなくてもいいかもです。</p>
+<p>それよりも、最初のhtmlのロードが長いです。以下は一番最初のビデオの状態を詳細にみた結果です。まだ圧縮転送やキャッシュは効かせていませんが、マシン性能が出る部分ですかね。ちょっと遅いです。NGINXだともう少し速くなるかもですので、また試してみたいと思います。</p>
+<p><img loading="lazy" class="alignnone size-full wp-image-5832" src="./../../../../wp-content/uploads/2020/08/e8b2bce3828ae4bb98e38191e3819fe794bbe5838f_2020_08_31_1_41.png" alt="貼り付けた画像_2020_08_31_1_41" width="977" height="1047"></p>
+<p>このWEBページのindex相当になるファイルはサイズ、15kb程度です。例えば、phpinfoのページを読んだ結果は以下です。このページは、82.0 KBありますが、0.4秒で終わっています。</p>
+<p><img loading="lazy" class="alignnone size-full wp-image-5833" src="./../../../../wp-content/uploads/2020/08/webpagetest_test_details_-_tokyo___jh_gpl_jp_info_php_-_08_31_20_01_45_34.png" alt="WebPageTest_Test_Details_-_Tokyo___jh_gpl_jp_info_php_-_08_31_20_01_45_34" width="970" height="831"></p>
+<p>つまり、mariadbにアクセスしたりphpでのwordpressの処理時間がかかっているから遅くなっているということになりますね。</p>
+<p>例えば、これは以前検討していたマシンでの結果ですが、htmlのロードは0.2秒以内に終わっています。UnixBenchが7000近く出るマシンでネットワークもIPv4→IPv6トンネルなので、比較するとあれですが、どこまで近づけるかですね。</p>
+<p><img loading="lazy" class="alignnone size-full wp-image-5835" src="./../../../../wp-content/uploads/2020/08/webpagetest_test_details_-_tokyo___hoge_gpl_jp_-_03_16_20_02_24_59.png" alt="WebPageTest_Test_Details_-_Tokyo___hoge_gpl_jp_-_03_16_20_02_24_59" width="950" height="925"></p>
+<p>まぁ、速度的なことより困っていることがあります。それは、ローカルのマシンから、termux上で動作しているwordpressにグローバルIPでアクセスできないことです。この場合、ルータの管理画面にアクセスしちゃうんで、どうしようかなと。こういうのなんていうんでしたっけか？　とにかく、今の拠点のルータ（PR-400KI）は、内側ネットワークから外側のグローバルアドレスにアクセスしたものを、変換（最終的にサーバのプライベートアドレスに変換）してくれないのです。</p>
+<p>プライベートアドレスだと、wordpressの設定で、グローバルのIPがマッピングされているドメイン名の設定になっているので（ルータで80と8080をポート転送してwordpressを運用）、リダイレクトされてアクセスできないんですよね。これはwordpress の仕様みたいなので回避不可能かなと。なんか言葉で書くとわかりにくいですね。今度、時間があるときに図解で問題点を明確にしたいです。</p>
+<p>今の所、２案あります。１つは、マルチセッションを貼って違う光プロバイダーからアクセスさせる方法。もう一つは、リバースプロキシを経由させる方法です。</p>
+<p>スマホで非ルートで動かすtermux は、IPテーブルとかルーティングとかいじれないので工夫が必要ですね。</p>
+<p>ネットワークはあんまり得意じゃないんで、もっといい解決方法があるかもしれませんが。</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../../08/29/redminote9sunixbench/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">衝撃価格7500円でゲットしたRedmi Note 9SにLinux入れてUnixBenchを計測</a></div>
+<div class="nav-next"><a href="./../addmacosstaticroute/index.html" rel="next noopener noreferrer" data-wpel-link="internal">備忘録：macosの静的ルートの追加</a></div>
+</div></nav><div id="comments" class="comments-area"><div class="comments-wrapper">
+<h2 class="comments-title"> 「<span>Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか</span>」への1件のフィードバック</h2>
+<ol class="comment-list"><li class="post pingback"><p>ピンバック: <a href="./../../07/%e3%83%9d%e3%83%bc%e3%83%88%e3%83%95%e3%82%a9%e3%83%af%e3%83%bc%e3%83%89%e3%81%ae%e7%b5%8c%e8%b7%af%e3%81%a7%e3%80%81u%e3%82%bf%e3%83%bc%e3%83%b3-nat%e3%81%a8%e3%81%8/index.html" rel="external nofollow ugc noopener noreferrer" class="url wpel-icon-right" data-wpel-link="external" target="_blank">ポートフォワードの経路で、Uターン NATとかヘアピンNATが使えないルータの場合のあれこれ &#8211; アリエクでポチった JunkHack<span class="wpel-icon wpel-image wpel-icon-1"></span></a></p></li></ol>
+<p class="no-comments">コメントは受け付けていません。</p>
+</div></div></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_f9042458c0fee7d42884c6f497291920.js"></script>
+</body>
+</html>

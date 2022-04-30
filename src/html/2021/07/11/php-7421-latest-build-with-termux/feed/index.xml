@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	TermuxのパッケージPHP7.4.21最新ビルド へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Mon, 22 Nov 2021 07:08:29 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-130</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Thu, 09 Sep 2021 17:35:33 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=10746#comment-130</guid>
+
+					<description><![CDATA[最近、仕事が忙しいのでコメントでこのPHPの運用報告。
+このサイトで、PHP7.4.21を２ヶ月連続稼働していますが問題ない感じです〜]]></description>
+			<content:encoded><![CDATA[<p>最近、仕事が忙しいのでコメントでこのPHPの運用報告。<br />
+このサイトで、PHP7.4.21を２ヶ月連続稼働していますが問題ない感じです〜</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

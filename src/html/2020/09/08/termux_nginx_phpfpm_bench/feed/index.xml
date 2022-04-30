@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	スマホサーバの構成をNGINX+php-fpm+mariadbの構成にしてWordPressを動かして速度を計測しておいた へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Mon, 10 May 2021 21:42:31 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-114</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Mon, 10 May 2021 21:42:31 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5943#comment-114</guid>
+
+					<description><![CDATA[メロンさん、こんにちわ！
+
+今度、Pixel3からUmidigiF2に一時的に引っ越すのでその時に設定内容とか纏めてみますね。
+少々お待ちください。Termuxってほんと面白いです。]]></description>
+			<content:encoded><![CDATA[<p>メロンさん、こんにちわ！</p>
+<p>今度、Pixel3からUmidigiF2に一時的に引っ越すのでその時に設定内容とか纏めてみますね。<br />
+少々お待ちください。Termuxってほんと面白いです。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		メロン より		</title>
+		<link>./../index.html#comment-113</link>
+
+		<dc:creator><![CDATA[メロン]]></dc:creator>
+		<pubDate>Mon, 10 May 2021 08:41:15 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5943#comment-113</guid>
+
+					<description><![CDATA[はじめまして！
+おもしろい記事ですね。
+
+自分も試したくなり、早速やってみましたが、nginxやphp-fpmのコンフィグがよくないのか、うまく動きません。。
+php-fpmの設定例とか記事にされる予定はありますでしょうか？]]></description>
+			<content:encoded><![CDATA[<p>はじめまして！<br />
+おもしろい記事ですね。</p>
+<p>自分も試したくなり、早速やってみましたが、nginxやphp-fpmのコンフィグがよくないのか、うまく動きません。。<br />
+php-fpmの設定例とか記事にされる予定はありますでしょうか？</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

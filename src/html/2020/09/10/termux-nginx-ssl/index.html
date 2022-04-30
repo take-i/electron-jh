@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>Termuxでのスマホサーバ、SSLアクセスでも耐えれそうかな？ &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/9464/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=9464">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F10%2Ftermux-nginx-ssl%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F10%2Ftermux-nginx-ssl%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-9464 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-9464" class="post-9464 post type-post status-publish format-standard has-post-thumbnail hentry category-linux category-wordpress category-speeding-up"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published updated" datetime="2020-09-10T02:27:32+09:00">2020年9月10日</time></a> </span><span class="posted-on">更新日:2020年9月10日</span> <span class="categories"> <a href="./../../../../category/linux/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Linux</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a>, <a href="./../../../../category/speeding-up/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">高速化</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2020/09/termuxssl.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2020/09/termuxssl.png 800w, ./../../../../wp-content/uploads/2020/09/termuxssl-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">Termuxでのスマホサーバ、SSLアクセスでも耐えれそうかな？</h1>
+</div></header><div class="entry-content">
+<p>TermuxでのLet’s Encrypt　SSL化がやっとできたのでメモっておきます！</p>
+<p>まず心配だったのは、SSLアクセスしたときのレスポンスですが、まぁ我慢どころといった感じでしょうか。</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_test_details_-_tokyo___jh_gpl_jp__-_09_10_20_00_45_09.png?w=937" alt="" class="wp-image-5982"></figure><p>非SSLと比べると、接続には少し時間がかかっています。実際にスマホからSIM通信してみると、若干ワンテンポ送れる感じです。</p>
+<p>証明書は、Let’s Encrypt でこれは３ヶ月ごとに更新しないといけないので自動化が必須となってきます。手動でやってもいいのですが、絶対面倒になって証明書を切らしてしまうので。で、自動化には <a rel="noreferrer noopener external" href="https://certbot.eff.org/" target="_blank" data-wpel-link="external" class="wpel-icon-right">certbot<span class="wpel-icon wpel-image wpel-icon-1"></span></a> のスクリプトが有名なんですが、これは依存関係などがあったり、root （スクリプト中で su したり）が必須とかで、Termux では動きません。動かす方法もあるのでしょうが、世の中にはもっと小さな自動化ツールがありました！</p>
+<p><a rel="noreferrer noopener external" href="https://github.com/diafygi/acme-tiny" target="_blank" data-wpel-link="external" class="wpel-icon-right">acme-tiny<span class="wpel-icon wpel-image wpel-icon-1"></span></a> っていうPython製の自動化PGです。pythonとopenssl があれば動くそうです。pip で入れて見ます。</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#suteppu1_pythonwo_rureru"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">ステップ１ pythonを入れる</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#suteppu2_PIPde_acme-tiny_wo_rureru"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">ステップ２ PIPで acme-tiny を入れる</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#suteppu3_Lets_Encryptakauntono_mi_mi_jian"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">ステップ３ Let’s Encryptアカウントの秘密鍵</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#suteppu4_domein_yongno_mi_mi_jianwo_zuo_cheng"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">ステップ４ ドメイン用の秘密鍵を作成</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#suteppu5_domeinno_zheng_ming_shu_shu_ming_yao_qiu_CSRwo_zuo_cheng"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">ステップ５ ドメインの証明書署名要求（CSR）を作成</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#suteppu6_zheng_ming_shuni_shu_mingshitemorau"> <span class="lwptoc_item_number">6</span> <span class="lwptoc_item_label">ステップ６ 証明書に署名してもらう</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#suteppu7_nginxno_she_ding"> <span class="lwptoc_item_number">7</span> <span class="lwptoc_item_label">ステップ７ nginxの設定</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#liangkuwakarankoto"> <span class="lwptoc_item_number">8</span> <span class="lwptoc_item_label">良くわからんこと！</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="suteppu1_pythonwo_rureru">ステップ１ pythonを入れる</span></h3>
+<p>pythonが必要なので、なければ入れます。今回は、もう入れてあるので次です。</p>
+<pre class="wp-block-code"><code>$ dpkg-query -l | grep python
+ii  python             3.8.5             aarch64      Python 3 programming language intended to enable clear programs
+
+$ pkg install python -y</code></pre>
+<h3><span id="suteppu2_PIPde_acme-tiny_wo_rureru">ステップ２　PIPで acme-tiny を入れる</span></h3>
+<pre class="wp-block-code"><code>$ pip install acme-tiny</code></pre>
+<p>pip が古いとか言われたら、以下で。</p>
+<pre class="wp-block-code"><code>$ python3 -m pip install --upgrade pip</code></pre>
+<p>以下に入るようです。</p>
+<pre class="wp-block-code"><code>$ which acme-tiny
+/data/data/com.termux/files/usr/bin/acme-tiny
+
+$ find $PREFIX -name *acme*
+/data/data/com.termux/files/usr/bin/acme-tiny
+/data/data/com.termux/files/usr/lib/python3.8/site-packages/acme_tiny.py
+/data/data/com.termux/files/usr/lib/python3.8/site-packages/__pycache__/acme_tiny.cpython-38.pyc
+/data/data/com.termux/files/usr/lib/python3.8/site-packages/acme_tiny-4.1.0.dist-info</code></pre>
+<h3><span id="suteppu3_Lets_Encryptakauntono_mi_mi_jian">ステップ３　Let’s Encryptアカウントの秘密鍵</span></h3>
+<p>どこか適当な場所にディレクトリを作って、そこで作業します。</p>
+<pre class="wp-block-code"><code>$ cd
+$ mkdir ssl
+$ cd ssl
+$ openssl genrsa 4096 &gt; account.key</code></pre>
+<h3><span id="suteppu4_domein_yongno_mi_mi_jianwo_zuo_cheng">ステップ４　ドメイン用の秘密鍵を作成</span></h3>
+<p>ドメイン名は、読み替えてみてください。</p>
+<pre class="wp-block-code"><code>$ openssl genrsa 4096 &gt; www.example.jp.key</code></pre>
+<h3><span id="suteppu5_domeinno_zheng_ming_shu_shu_ming_yao_qiu_CSRwo_zuo_cheng">ステップ５　ドメインの証明書署名要求（CSR）を作成</span></h3>
+<pre class="wp-block-code"><code>シングルドメイン
+$ openssl req -new -sha256 -key www.example.jp.key -subj "/CN=www.example.jp" &gt; www.example.jp.csr</code></pre>
+<p>サブドメインのワイルドカード証明書はどうやって作るのかまだ知りません。課題です。</p>
+<h3><span id="suteppu6_zheng_ming_shuni_shu_mingshitemorau">ステップ６　証明書に署名してもらう</span></h3>
+<pre class="wp-block-code"><code>$ mkdir -p /data/data/com.termux/files/home/【WEBROOT】/.well-known/acme-challenge/
+
+$ acme-tiny --disable-check --account-key ./account.key --csr ./www.example.jp.csr --acme-dir /data/data/com.termux/files/home/【WEBROOT】/.well-known/acme-challenge/ &gt; ./www.example.jp.crt</code></pre>
+<p>ここで、–disable-check　を入れていますがこれは先日記載したUターンNAT（ヘアピンNAT）ができないため、自分自身のWEBにアクセスできないからです。そういう問題がない場合は、削除してください。</p>
+<p>こんな感じで出来ると思います。crtができない場合は何かが悪いです。ログにヒントがありますので慌てず、探りましょう！</p>
+<pre class="wp-block-code"><code>.
+├── account.key
+├── www.example.jp.crt　署名された証明書
+├── www.example.jp.csr
+└──  www.example.jp.key　鍵
+
+.WEBROOT
+    └── .well-known
+        └── acme-challenge
+           └──xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></pre>
+<h3><span id="suteppu7_nginxno_she_ding">ステップ７　nginxの設定</span></h3>
+<p>設定ファイル抜粋。ルータとtermuxはポート転送しています。</p>
+<pre class="wp-block-code"><code>http {
+：：（略）
+    ssl_session_timeout 30m;
+    ssl_session_cache   shared:SSL:10m;
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256;
+：：（略）
+server {
+     listen      8443;
+：：（略）
+     ssl_certificate     /data/data/com.termux/files/home/ssl/www.example.jp.crt;
+     ssl_certificate_key /data/data/com.termux/files/home/ssl/www.example.jp.key;
+：：（略）
+</code></pre>
+<p>なぜか、location で、.well-known/acme-challenge/　の場所が以下のように指定したら、アクセスできませんでした。なので、これは消して、実際のWEBROOTに/.well-known/acme-challenge/を作りました。</p>
+<pre class="wp-block-code"><code>location ^~ /.well-known/acme-challenge/ {
+    root /data/data/com.termux/files/home/【acme-challengeがあるパス】;
+}
+location = /.well-known/acme-challenge/ {
+    return 404;
+}</code></pre>
+<p>以下の評価が先にマッチしてしまって、これも一時的に消しました。</p>
+<pre class="wp-block-code"><code>location ~ /\. {
+    return 404;
+}</code></pre>
+<p>nginxの設定、不慣れなんでどこかおかしいんでしょうね。</p>
+<p>ワイルドカード証明書が取得できるようにしたら、cronに定期実行してもらおうと思いますが、もう少しいろいろ試してみてからにします。</p>
+<p>SSLのチェックも良さそうです。</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/ssl_server_test__jh_gpl_jp__powered_by_qualys_ssl_labs_.png?w=1024" alt="" class="wp-image-5993"></figure><p>PageSpeed Insightsのモバイルのスコアも良さそうです。</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/pagespeed_insights-1.png?w=744" alt="" class="wp-image-5995"></figure><p>PC版は１００点出ました！</p>
+<figure class="wp-block-image size-large"><img src="./../../../../wp-content/uploads/2020/09/pagespeed_insights-2.png?w=737" alt="" class="wp-image-5997"></figure><p>ということで、Termux のnginxとphp-fpmで無料の証明書を入れて速度的にも問題なさそうかなという感じです。</p>
+<p>あとは、今回出たもろもろの問題をクリアにしてマクロを定期実行できればOKです。ぼちぼちやっていきます。でも、10月はじめまでには、移行完了しないといけませんので、それまでにはCDN問題もクリアして試してみたいです。</p>
+<h3><span id="liangkuwakarankoto">良くわからんこと！</span></h3>
+<p>・nginxのlocationのマッチはどうなってるのか？</p>
+<p>・ワイルドカード証明書はどうやって作るのか？CSRの作り方っぽいが？</p>
+<p>・リバースプロキシーでSSLアクセスするにはどうしたら？</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../09/avatar-wordpress/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">アバター吹き出しをWordPressの自前ブログでやっと使える！</a></div>
+<div class="nav-next"><a href="./../../11/wildcard-domain-acme/index.html" rel="next noopener noreferrer" data-wpel-link="internal">Termux環境で動作するLet&#8217;s Encryptのワイルドカードドメインに対応した自動化ツールを探せ！</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_6484edac0cbb53498caa41188c202bba.js"></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>備忘録：Termuxで、Pixel3のUnixBench &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/9748/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=9748">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F10%2F03%2Ftermux-pixel3-unixbench%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F10%2F03%2Ftermux-pixel3-unixbench%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-9748 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-9748" class="post-9748 post type-post status-publish format-standard has-post-thumbnail hentry category-android category-linux category-wordpress"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published" datetime="2020-10-03T04:30:36+09:00">2020年10月3日</time><time class="updated" datetime="2020-10-07T06:54:46+09:00">2020年10月7日</time></a> </span><span class="posted-on">更新日:2020年10月7日</span> <span class="categories"> <a href="./../../../../category/android/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Android</a>, <a href="./../../../../category/linux/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Linux</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2020/10/Pixel3-unixbench.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2020/10/Pixel3-unixbench.png 800w, ./../../../../wp-content/uploads/2020/10/Pixel3-unixbench-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">備忘録：Termuxで、Pixel3のUnixBench</h1>
+</div></header><div class="entry-content">
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>Pixel3が来たんでUnixBenchとっておきます！</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>あ〜、<s>ごみ</s>ジャンクなPixel3が到着したのね！</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>・・・いちいち、ジャンク〜と言うのね！w</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>ごみ、よりいいでしょ？w</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<p>はい、ジャンクなPixel3が到着しました。メルカリは面白いですね。値下げ文化みたいなのがあって、売り手と買い手のせめぎ合いです。今回、自分はそういうのには参加せず、8500円まで値下げされていた状態で発見しました。さらに、買い手が7500円でどうか？と打診中に、8500円でゲットしたという感じです。ヤフオクはそういうのがないので、なんか新鮮に感じましたが、売り手は慣れないと「まーた、値下げかよ！」みたいな感じになるのかなと。Pixel３は発売価格9．５万円ですからね！</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#naze_jin_qingPixel3nankagettoshitano"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">なぜ、今頃Pixel3なんかゲットしたの？</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#apuri_kai_fa_zhetoPixel"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">アプリ開発者とPixel</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#mazuhaAntutu8_debenchimaku"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">まずはAntutu8 でベンチマーク</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#Termux_rurete_she_ding"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">Termux入れて、設定</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#UnixBenchiwo_ji_ce"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">UnixBenchiを計測！</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#zhui_ji1007"> <span class="lwptoc_item_number">6</span> <span class="lwptoc_item_label">追記：10/07</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#matome"> <span class="lwptoc_item_number">7</span> <span class="lwptoc_item_label">まとめ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#atogaki"> <span class="lwptoc_item_number">8</span> <span class="lwptoc_item_label">あとがき</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="naze_jin_qingPixel3nankagettoshitano">なぜ、今頃Pixel3なんかゲットしたの？</span></h3>
+<p>え〜っとw。目的は root化した状態の termux で遊びたかったからです。UmidigiF2はこのブログが動作しているので、あれこれできないのです。</p>
+<p>で、どうせなら、Umidigi F2 よりも速そうで Androidリファレンス機のPixelシリーズが良いな！　という感じです。Pixelという機種は、知らない人もいるかもしれませんが Google から発売されている機種で、AndroidOSの最新版が最初にリリースされます。つい最近も、Android11がリリースされましたよね！なので、いち早くandroidOSの最新にアップデートできます。</p>
+<h3><span id="apuri_kai_fa_zhetoPixel">アプリ開発者とPixel</span></h3>
+<p>　アプリ開発者は、1年に1回9月ごろにAndroidOSのアップデートがあるので、情報調査など春頃から準備しています。9月には新しいOSが出るから、それにアプリを対応させるんです。これは慣例作業なので、大概アプリ開発やってる人や会社は、Pixelシリーズを持っています。iOSもこの時期にOSアップデートがあり、アプリ開発者は新年度〜秋にかけて大忙しです。iosとandroidの両方のアプリが扱っているので結構大変ですが、一番面白い時期でもあります。</p>
+<p>　また、秋〜春にかけては新しいOSが実装した新機能にアプリをどう対応させるのか、またその機能を実装するのか？など様々な検討が繰り広げられています。つまり、1年中あれこれやることが嫌でもあるわけです。</p>
+<h3><span id="mazuhaAntutu8_debenchimaku">まずはAntutu8 でベンチマーク</span></h3>
+<p>Antutuの情報はたくさんあるんですが、意図的にPixel3で OS10とOS11でベンチマークした結果はほぼ無いと思うので、載せておきます。なお、Antutuは何も意識しないと常駐するのでOS初期化後に入れて計測したら速攻、消したほうがいいです。そのうち、この指標も違うものがスタンダードになると思うのですが、今は antutuスコアがピンときますよね。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="796" height="741" src="./../../../../wp-content/uploads/2020/10/antutu_bench.png" alt="" class="wp-image-9750" srcset="./../../../../wp-content/uploads/2020/10/antutu_bench.png 796w, ./../../../../wp-content/uploads/2020/10/antutu_bench-768x715.png 768w" sizes="(max-width: 796px) 100vw, 796px"></figure></div>
+<p>約、２５マン〜２７マンで今ではミドルクラスの上位というスコアです。計測の誤差なのか、少しAndroid11で計測したときの方が速くなっていますね。Kernel周りの影響か、チューニングを変えて来たのかそのあたりは不明です。</p>
+<p>計測時のKernelバージョンは以下となります。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="791" height="735" src="./../../../../wp-content/uploads/2020/10/pixel10-11.png" alt="" class="wp-image-9751" srcset="./../../../../wp-content/uploads/2020/10/pixel10-11.png 791w, ./../../../../wp-content/uploads/2020/10/pixel10-11-768x714.png 768w" sizes="(max-width: 791px) 100vw, 791px"></figure></div>
+<h3><span id="Termux_rurete_she_ding">Termux入れて、設定</span></h3>
+<p>termuxを入れて、アプリが良い状態で動作するよう以下の設定をやっておきます。</p>
+<p>・Wakelockを有効にしておく。</p>
+<p>画面右の状態にしておきます。wakelockとは何か知りたい人は以下を参照してね。Termuxは、wakelockしておくか、しないか選択できるようになっています。</p>
+<blockquote class="wp-block-quote">
+<p>デバイスの起動状態を維持する</p>
+<cite><a href="https://developer.android.com/training/scheduling/wakelock?hl=ja" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">https://developer.android.com/training/scheduling/wakelock?hl=ja<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="794" height="739" src="./../../../../wp-content/uploads/2020/10/8.png" alt="" class="wp-image-9752" srcset="./../../../../wp-content/uploads/2020/10/8.png 794w, ./../../../../wp-content/uploads/2020/10/8-768x715.png 768w" sizes="(max-width: 794px) 100vw, 794px"></figure></div>
+<p>・電池の最適化をしない　設定にしておく</p>
+<p>この表現、紛らわしいですよね！　つまり、標準ではシステム関連のプリイン・アプリの一部以外、つまりストアから入れたアプリは、最適化していて電池消費を抑える仕組みです。これを意図的に、「最適化しない」状態にしておきます。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="430" height="864" src="./../../../../wp-content/uploads/2020/10/7.png" alt="" class="wp-image-9753"></figure></div>
+<h3><span id="UnixBenchiwo_ji_ce">UnixBenchiを計測！</span></h3>
+<p>結果から。どちらも1回限りの結果ですので計測誤差の範囲かと思います。</p>
+<p>・Pixel3 Android10の場合<br>　CPU：Snapdragon 845<br>　Hardware : Qualcomm Technologies, Inc SDM845</p>
+<blockquote class="wp-block-quote"><p>シングル：546.9<br>8CPU：1396.4</p></blockquote>
+<p>・Pixel3 Android11の場合</p>
+<blockquote class="wp-block-quote"><p>シングル：520.0<br>8CPU：1343.3</p></blockquote>
+<p>・Pixel3 Android11　<strong>再計測</strong></p>
+<blockquote class="wp-block-quote"><p>シングル：590.1<br>8CPU：1732.6</p></blockquote>
+<p>UmidigiF2や、Redmi Note 9S より速いですね。比較のため、スコアを載せておきます。</p>
+<p>・UmidigiF2 Android10の場合<br>　CPU MediaTek Helio P70<br>　Hardware : MT6771V/CT</p>
+<blockquote class="wp-block-quote"><p>シングルCPU・・・スコア406.2<br>8CPU・・・・・・スコア1312.3</p></blockquote>
+<p>・Redmi Note 9S Android10の場合<br>　CPU:Qualcomm&nbsp;Snapdragon 720G<br>　Hardware : Qualcomm Technologies, Inc SM7125</p>
+<blockquote class="wp-block-quote"><p>シングルCPU・・・スコア571.9<br>8CPU・・・・・・スコア1127.1</p></blockquote>
+<p>詳細は以下に載せておきます。インストール方法は、以下参照してね。</p>
+<blockquote class="wp-block-quote"><p><a href="./../../../08/29/%e8%a1%9d%e6%92%83%e4%be%a1%e6%a0%bc7500%e5%86%86%e3%81%a7%e3%82%b2%e3%83%83%e3%83%88%e3%81%97%e3%81%9fredmi-note-9s%e3%81%ablinux%e5%85%a5%e3%82%8c%e3%81%a6unixbench%e3%82%92%e8%a8%88%e6%b8%ac/index.html" data-type="post" data-id="5786" data-wpel-link="internal" rel="noopener noreferrer">衝撃価格7500円でゲットしたRedmi Note 9SにLinux入れてUnixBenchを計測</a></p></blockquote>
+<p>・Android10の場合</p>
+<pre class="wp-block-code"><code>$ cat /proc/cpuinfo | head
+Processor	: AArch64 Processor rev 13 (aarch64)
+processor	: 0
+BogoMIPS	: 38.00
+Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp
+CPU implementer	: 0x51
+CPU architecture: 8
+CPU variant	: 0x7
+CPU part	: 0x803
+CPU revision	: 12
+
+========================================================================
+   BYTE UNIX Benchmarks (Version 5.1.3)
+
+   System: localhost: Android
+   OS: Android -- 4.9.210-g28c696160049-ab6386370 -- #0 SMP PREEMPT Fri Apr 10 23:00:22 UTC 2020
+   Machine: aarch64 (unknown)
+   Language: en_US.utf8 (charmap=, collate=)
+   13:25:54 up  1:07,  load average: 6.94, 6.06, 4.72; runlevel 
+
+------------------------------------------------------------------------
+Benchmark Run: Fri Oct 02 2020 13:25:54 - 13:54:01
+8 CPUs in system; running 1 parallel copy of tests
+
+Dhrystone 2 using register variables       29151129.2 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                     6277.5 MWIPS (9.9 s, 7 samples)
+Execl Throughput                                308.0 lps   (29.9 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        425891.2 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          167742.2 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       1012005.2 KBps  (30.0 s, 2 samples)
+Pipe Throughput                             1057618.2 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                  49668.9 lps   (10.0 s, 7 samples)
+Process Creation                               1233.6 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                   1388.6 lpm   (60.0 s, 2 samples)
+Shell Scripts (8 concurrent)                    478.6 lpm   (60.1 s, 2 samples)
+System Call Overhead                        1024417.8 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   29151129.2   2498.0
+Double-Precision Whetstone                       55.0       6277.5   1141.4
+Execl Throughput                                 43.0        308.0     71.6
+File Copy 1024 bufsize 2000 maxblocks          3960.0     425891.2   1075.5
+File Copy 256 bufsize 500 maxblocks            1655.0     167742.2   1013.5
+File Copy 4096 bufsize 8000 maxblocks          5800.0    1012005.2   1744.8
+Pipe Throughput                               12440.0    1057618.2    850.2
+Pipe-based Context Switching                   4000.0      49668.9    124.2
+Process Creation                                126.0       1233.6     97.9
+Shell Scripts (1 concurrent)                     42.4       1388.6    327.5
+Shell Scripts (8 concurrent)                      6.0        478.6    797.7
+System Call Overhead                          15000.0    1024417.8    682.9
+                                                                   ========
+System Benchmarks Index Score                                         546.9
+
+------------------------------------------------------------------------
+Benchmark Run: Fri Oct 02 2020 13:54:01 - 14:22:44
+8 CPUs in system; running 8 parallel copies of tests
+
+Dhrystone 2 using register variables       91224897.9 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                    23800.2 MWIPS (9.6 s, 7 samples)
+Execl Throughput                               1057.6 lps   (29.6 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        401385.2 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          139250.6 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       1389559.4 KBps  (30.0 s, 2 samples)
+Pipe Throughput                             3891494.8 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                 249526.0 lps   (10.0 s, 7 samples)
+Process Creation                              11033.1 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                   4638.3 lpm   (60.1 s, 2 samples)
+Shell Scripts (8 concurrent)                    475.1 lpm   (60.7 s, 2 samples)
+System Call Overhead                        3275443.3 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   91224897.9   7817.0
+Double-Precision Whetstone                       55.0      23800.2   4327.3
+Execl Throughput                                 43.0       1057.6    246.0
+File Copy 1024 bufsize 2000 maxblocks          3960.0     401385.2   1013.6
+File Copy 256 bufsize 500 maxblocks            1655.0     139250.6    841.4
+File Copy 4096 bufsize 8000 maxblocks          5800.0    1389559.4   2395.8
+Pipe Throughput                               12440.0    3891494.8   3128.2
+Pipe-based Context Switching                   4000.0     249526.0    623.8
+Process Creation                                126.0      11033.1    875.6
+Shell Scripts (1 concurrent)                     42.4       4638.3   1093.9
+Shell Scripts (8 concurrent)                      6.0        475.1    791.9
+System Call Overhead                          15000.0    3275443.3   2183.6
+                                                                   ========
+System Benchmarks Index Score                                        1396.4</code></pre>
+<p>・Android11の場合</p>
+<pre class="wp-block-code"><code>========================================================================
+   BYTE UNIX Benchmarks (Version 5.1.3)
+
+   System: localhost: Android
+   OS: Android -- 4.9.223-g5bded8e40b62-ab6647920 -- #0 SMP PREEMPT Thu Jul 2 03:22:48 UTC 2020
+   Machine: aarch64 (unknown)
+   Language: en_US.utf8 (charmap=, collate=)
+   19:02:02 up 18 min,  load average: 2.42, 2.89, 2.08; runlevel 
+
+------------------------------------------------------------------------
+Benchmark Run: Fri Oct 02 2020 19:02:02 - 19:30:09
+8 CPUs in system; running 1 parallel copy of tests
+
+Dhrystone 2 using register variables       27896830.6 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                     6039.7 MWIPS (10.0 s, 7 samples)
+Execl Throughput                                281.0 lps   (29.6 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        401241.9 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          139431.4 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       1020201.2 KBps  (30.0 s, 2 samples)
+Pipe Throughput                              826721.2 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                  48668.2 lps   (10.0 s, 7 samples)
+Process Creation                               1540.1 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                   1008.3 lpm   (60.0 s, 2 samples)
+Shell Scripts (8 concurrent)                    514.6 lpm   (60.1 s, 2 samples)
+System Call Overhead                        1128058.3 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   27896830.6   2390.5
+Double-Precision Whetstone                       55.0       6039.7   1098.1
+Execl Throughput                                 43.0        281.0     65.4
+File Copy 1024 bufsize 2000 maxblocks          3960.0     401241.9   1013.2
+File Copy 256 bufsize 500 maxblocks            1655.0     139431.4    842.5
+File Copy 4096 bufsize 8000 maxblocks          5800.0    1020201.2   1759.0
+Pipe Throughput                               12440.0     826721.2    664.6
+Pipe-based Context Switching                   4000.0      48668.2    121.7
+Process Creation                                126.0       1540.1    122.2
+Shell Scripts (1 concurrent)                     42.4       1008.3    237.8
+Shell Scripts (8 concurrent)                      6.0        514.6    857.6
+System Call Overhead                          15000.0    1128058.3    752.0
+                                                                   ========
+System Benchmarks Index Score                                         520.0
+
+------------------------------------------------------------------------
+Benchmark Run: Fri Oct 02 2020 19:30:09 - 19:58:33
+8 CPUs in system; running 8 parallel copies of tests
+
+Dhrystone 2 using register variables       95077365.5 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                    24278.9 MWIPS (10.0 s, 7 samples)
+Execl Throughput                               1177.7 lps   (30.0 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        428589.2 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          124505.1 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       1293287.0 KBps  (30.0 s, 2 samples)
+Pipe Throughput                             3825103.0 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                 299481.8 lps   (10.0 s, 7 samples)
+Process Creation                              10720.9 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                   3892.1 lpm   (60.1 s, 2 samples)
+Shell Scripts (8 concurrent)                    386.7 lpm   (60.7 s, 2 samples)
+System Call Overhead                        2499234.1 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   95077365.5   8147.2
+Double-Precision Whetstone                       55.0      24278.9   4414.3
+Execl Throughput                                 43.0       1177.7    273.9
+File Copy 1024 bufsize 2000 maxblocks          3960.0     428589.2   1082.3
+File Copy 256 bufsize 500 maxblocks            1655.0     124505.1    752.3
+File Copy 4096 bufsize 8000 maxblocks          5800.0    1293287.0   2229.8
+Pipe Throughput                               12440.0    3825103.0   3074.8
+Pipe-based Context Switching                   4000.0     299481.8    748.7
+Process Creation                                126.0      10720.9    850.9
+Shell Scripts (1 concurrent)                     42.4       3892.1    917.9
+Shell Scripts (8 concurrent)                      6.0        386.7    644.6
+System Call Overhead                          15000.0    2499234.1   1666.2
+                                                                   ========
+System Benchmarks Index Score                                        1343.3</code></pre>
+<h3><span id="zhui_ji1007">追記：10/07</span></h3>
+<p>再度、ベンチマーク測っていたらもっと良いスコアが出た。気温とか関係あるのかな？　室温24度でちょっと肌寒くなってきたときに計測したもの。</p>
+<p>・Pixel3 Android11　再計測</p>
+<blockquote class="wp-block-quote"><p>シングル：590.1<br>8CPU：1732.6</p></blockquote>
+<p>この時、CPUのクロックは以下となっていました。6881と、1766400と、2803200</p>
+<pre class="wp-block-code"><code># cat /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/cur_freq
+6881
+# cat  /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_cur_freq
+1766400
+# cat  /sys/devices/system/cpu/cpufreq/policy/cpuinfo_cur_freq
+policy0/ policy4/ 
+# cat  /sys/devices/system/cpu/cpufreq/policy4/cpuinfo_cur_freq
+2803200</code></pre>
+<p>平常時には、この値は以下。762と、748800と、825600</p>
+<pre class="wp-block-code"><code># cat /sys/devices/platform/soc/soc:qcom,mincpubw/devfreq/soc:qcom,mincpubw/cur_freq
+762
+# cat  /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_cur_freq
+748800
+# cat  /sys/devices/system/cpu/cpufreq/policy4/cpuinfo_cur_freq
+825600</code></pre>
+<p>これが、良い値が出た時です。計測誤差の範囲を超えているのでメモっておきます。冷蔵庫とか冷凍庫とかに入れて計測したらもう少しよくなるのかも。</p>
+<pre class="wp-block-code"><code>========================================================================
+   BYTE UNIX Benchmarks (Version 5.1.3)
+
+   System: localhost: Android
+   OS: Android -- 4.9.223-g5bded8e40b62-ab6647920 -- #0 SMP PREEMPT Thu Jul 2 03:22:48 UTC 2020
+   Machine: aarch64 (unknown)
+   Language: en_US.utf8 (charmap=, collate=)
+   05:38:19 up 2 days, 19:49,  load average: 0.50, 0.43, 0.44; runlevel 
+
+------------------------------------------------------------------------
+Benchmark Run: Wed Oct 07 2020 05:38:19 - 06:06:26
+8 CPUs in system; running 1 parallel copy of tests
+
+Dhrystone 2 using register variables       29316819.1 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                     6350.0 MWIPS (10.0 s, 7 samples)
+Execl Throughput                                364.2 lps   (29.9 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        442024.5 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          190751.4 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       1076696.0 KBps  (30.0 s, 2 samples)
+Pipe Throughput                             1154520.1 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                  56229.7 lps   (10.0 s, 7 samples)
+Process Creation                               1221.6 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                   1494.6 lpm   (60.0 s, 2 samples)
+Shell Scripts (8 concurrent)                    519.6 lpm   (60.1 s, 2 samples)
+System Call Overhead                        1181160.9 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   29316819.1   2512.2
+Double-Precision Whetstone                       55.0       6350.0   1154.6
+Execl Throughput                                 43.0        364.2     84.7
+File Copy 1024 bufsize 2000 maxblocks          3960.0     442024.5   1116.2
+File Copy 256 bufsize 500 maxblocks            1655.0     190751.4   1152.6
+File Copy 4096 bufsize 8000 maxblocks          5800.0    1076696.0   1856.4
+Pipe Throughput                               12440.0    1154520.1    928.1
+Pipe-based Context Switching                   4000.0      56229.7    140.6
+Process Creation                                126.0       1221.6     97.0
+Shell Scripts (1 concurrent)                     42.4       1494.6    352.5
+Shell Scripts (8 concurrent)                      6.0        519.6    866.0
+System Call Overhead                          15000.0    1181160.9    787.4
+                                                                   ========
+System Benchmarks Index Score                                         590.1
+
+------------------------------------------------------------------------
+Benchmark Run: Wed Oct 07 2020 06:06:26 - 06:34:46
+8 CPUs in system; running 8 parallel copies of tests
+
+Dhrystone 2 using register variables      117327891.2 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                    31178.6 MWIPS (10.1 s, 7 samples)
+Execl Throughput                               1466.5 lps   (29.8 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        667533.5 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          204691.5 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       1852436.2 KBps  (30.0 s, 2 samples)
+Pipe Throughput                             5170382.3 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                 181908.1 lps   (10.0 s, 7 samples)
+Process Creation                              12532.5 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                   5742.0 lpm   (60.1 s, 2 samples)
+Shell Scripts (8 concurrent)                    734.3 lpm   (60.2 s, 2 samples)
+System Call Overhead                        2722146.3 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0  117327891.2  10053.8
+Double-Precision Whetstone                       55.0      31178.6   5668.8
+Execl Throughput                                 43.0       1466.5    341.0
+File Copy 1024 bufsize 2000 maxblocks          3960.0     667533.5   1685.7
+File Copy 256 bufsize 500 maxblocks            1655.0     204691.5   1236.8
+File Copy 4096 bufsize 8000 maxblocks          5800.0    1852436.2   3193.9
+Pipe Throughput                               12440.0    5170382.3   4156.3
+Pipe-based Context Switching                   4000.0     181908.1    454.8
+Process Creation                                126.0      12532.5    994.6
+Shell Scripts (1 concurrent)                     42.4       5742.0   1354.2
+Shell Scripts (8 concurrent)                      6.0        734.3   1223.8
+System Call Overhead                          15000.0    2722146.3   1814.8
+                                                                   ========
+System Benchmarks Index Score                                        1732.6</code></pre>
+<h3><span id="matome">まとめ</span></h3>
+<p>まとめるほどの記事ではないですが、要点を書いておきます。</p>
+<p>・Pixel3は、シングル約550、マルチ8coreで1400くらいのUnixBenchスコア<br>・手持ちのスマホの中では一番速い<br>・antutuは、27マンくらいだが、GPUは使わないのでTermuxではもったいない<br>・今後、root化してtermuxで遊んでみようと思う<br>・再計測したら、1700超えていた。温度が関係しているくさい。</p>
+<h3><span id="atogaki">あとがき</span></h3>
+<p>あともう少しで、1400に届きそうでしたが2年前のハイエンドクラスなので検討していますよね。UnixBenchの結果にはグラフィックス性能が含まれないので、UmidigiF2や、Redmi Note 9S&nbsp;と比べてもさほど変わらない感じですね。</p>
+<p>　安くて、CPU性能が高いのはいろいろ検討した結果、MediaTek Dimensity 1000+　がいいんじゃないかなーと。このチップは、vivo iqoo z1とかに乗っていて antutuは、CPUで１８万、トータルで５０万を超えています。</p>
+<p>　これ、Termux上のUnixBenchだと2500は超えてきそうですよね！いつか、入手して確認してみたいなと思います。中古ではあまり出回っていないので、画面割れとかジャンクが出るまでは無理ですが。アリエクから新品で買っても3.4万くらいなんでさほど高くはないです。しかし遊びどきは、５Gが普及するあと１、２年後〜が中古市場に出回る時期かなと思います。</p>
+<p>別の見方をすれば、あと１、２年すればUnixBench2000〜3000で動作するスマホが、5000円とか１万未満の中古で買えちゃうってことです！</p>
+<p>　ARMチップが乗ったスマホの活用の夢が膨らみます！</p>
+<p>あと、画面割れのPixel3ですがもし画面を修理するならアリエクで9500円くらいで部品は入りそうです。まぁ、しかしそれほどひどい割れでもないですから、このまま使うかなと。なんか、直したら負けな気がします。w</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../../09/30/termux-smtp-client/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">Termuxからメールを送れるようにするには？</a></div>
+<div class="nav-next"><a href="./../../05/pixel3android11rroot/index.html" rel="next noopener noreferrer" data-wpel-link="internal">Pixel3・android11(R)正式リリース版でroot化！</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="word_balloon_user_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_user.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_skin_talk-css" href="./../../../../wp-content/plugins/word-balloon/css/skin/word_balloon_talk.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_inview_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_inview.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver" id="polyfill_IntersectionObserver-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_84a2606fca297d1a3a38ebd400eae2bd.js"></script>
+</body>
+</html>

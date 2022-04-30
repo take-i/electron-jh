@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Mon, 07 Sep 2020 08:01:33 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		ポートフォワードの経路で、Uターン NATとかヘアピンNATが使えないルータの場合のあれこれ &#8211; アリエクでポチった JunkHack より		</title>
+		<link>./../index.html#comment-93</link>
+
+		<dc:creator><![CDATA[ポートフォワードの経路で、Uターン NATとかヘアピンNATが使えないルータの場合のあれこれ &#8211; アリエクでポチった JunkHack]]></dc:creator>
+		<pubDate>Mon, 07 Sep 2020 08:01:33 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5823#comment-93</guid>
+
+					<description><![CDATA[[&#8230;] Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか：：まぁ、速度的なことより困っていることがあります。それは、ローカルのマシンから、termux上で動作しているwordpressにグローバルIPでアクセスできないことです。この場合、ルータの管理画面にアクセスしちゃうんで、どうしようかなと。こういうのなんていうんでしたっけか？　とにかく、今の拠点のルータ（PR-400KI）は、内側ネットワークから外側のグローバルアドレスにアクセスしたものを、変換（最終的にサーバのプライベートアドレスに変換）してくれないのです。 [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] Termuxのapache2+php+mariadbのチューニング前のwordpressの速度とか：：まぁ、速度的なことより困っていることがあります。それは、ローカルのマシンから、termux上で動作しているwordpressにグローバルIPでアクセスできないことです。この場合、ルータの管理画面にアクセスしちゃうんで、どうしようかなと。こういうのなんていうんでしたっけか？　とにかく、今の拠点のルータ（PR-400KI）は、内側ネットワークから外側のグローバルアドレスにアクセスしたものを、変換（最終的にサーバのプライベートアドレスに変換）してくれないのです。 [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

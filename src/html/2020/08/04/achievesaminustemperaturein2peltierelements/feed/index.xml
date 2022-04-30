@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	ペルチェ素子２段でマイナス温度を実現！　効率的に冷やす方法とは？ へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Sun, 04 Jul 2021 12:15:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		Tommy より		</title>
+		<link>./../index.html#comment-127</link>
+
+		<dc:creator><![CDATA[Tommy]]></dc:creator>
+		<pubDate>Mon, 28 Jun 2021 14:53:32 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5650#comment-127</guid>
+
+					<description><![CDATA[すみません。
+肝心なURLを忘れてました：笑
+https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13192817793]]></description>
+			<content:encoded><![CDATA[<p>すみません。<br />
+肝心なURLを忘れてました：笑<br />
+<a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13192817793" rel="nofollow ugc external noopener noreferrer" data-wpel-link="external" target="_blank" class="wpel-icon-right">https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q13192817793<span class="wpel-icon wpel-image wpel-icon-1"></span></a></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Tommy より		</title>
+		<link>./../index.html#comment-126</link>
+
+		<dc:creator><![CDATA[Tommy]]></dc:creator>
+		<pubDate>Mon, 28 Jun 2021 14:51:15 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5650#comment-126</guid>
+
+					<description><![CDATA[ご返信、ありがとうございます。かなり皆さんの実験ブログを拝見してますが、２枚重ねの成功者様はやはり、電圧を異なる値にしている。それと大前提ですが、放熱側のフィンの大きさやファンの大きさ、速度をかなり上げている方が共通してます。1点、電流のアンペア数を異なる値にするとかなりの違いが出てくるとの発言をされている方も居ます（あまり実験データが公表されていません）
+多分、御覧になっていると思いますが、次の理論を実験する為、冷却用素子1枚に対して2枚の素子で冷却する方法を実験してみたいと考えています。同じ電圧と異なる電圧で1対2枚にする効果がどうか？
+少し時間がかかりそうですが、ご連絡します。
+ひとまずお礼まで。]]></description>
+			<content:encoded><![CDATA[<p>ご返信、ありがとうございます。かなり皆さんの実験ブログを拝見してますが、２枚重ねの成功者様はやはり、電圧を異なる値にしている。それと大前提ですが、放熱側のフィンの大きさやファンの大きさ、速度をかなり上げている方が共通してます。1点、電流のアンペア数を異なる値にするとかなりの違いが出てくるとの発言をされている方も居ます（あまり実験データが公表されていません）<br />
+多分、御覧になっていると思いますが、次の理論を実験する為、冷却用素子1枚に対して2枚の素子で冷却する方法を実験してみたいと考えています。同じ電圧と異なる電圧で1対2枚にする効果がどうか？<br />
+少し時間がかかりそうですが、ご連絡します。<br />
+ひとまずお礼まで。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-125</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Wed, 23 Jun 2021 17:42:38 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5650#comment-125</guid>
+
+					<description><![CDATA[TOMMYさん、こんにちわ！
+
+はい、12Vと5Vのペルチェ素子は同じもので、TEC1-12706 12V 60W　を使っています。
+アリエクで5枚セットで買ったものです。確か送料込みで1500円くらいでした。
+ペルチェとペルチェの間には熱伝導グリスを塗って重ねているだけです。金属板のようなのは入れていません。いろいろ工夫するともっと効率は良くなるのかもしれませんね。
+
+ダストクーラーボックスを実際にシンク下に設置してみてわかったことですが、熱を排気しないとユニット自体をどんなに効率化しても限界があることがわかりました。つまり、シンク下の1平方くらいの空間の熱を排出しないと夏場は厳しいです。室内温度が約28度くらいで、ダストクーラーボックス内部は平均15度〜18度くらいになります。冬場は冷えすぎる感じで室内温度が約10度くらいで、2〜5度くらいになることがわかりました。
+
+何をどこに設置して冷やすのかにもよると思いますが、排熱を効率良く循環させる仕組みがポイントになる感じです。
+
+良いDIYライフを！]]></description>
+			<content:encoded><![CDATA[<p>TOMMYさん、こんにちわ！</p>
+<p>はい、12Vと5Vのペルチェ素子は同じもので、TEC1-12706 12V 60W　を使っています。<br />
+アリエクで5枚セットで買ったものです。確か送料込みで1500円くらいでした。<br />
+ペルチェとペルチェの間には熱伝導グリスを塗って重ねているだけです。金属板のようなのは入れていません。いろいろ工夫するともっと効率は良くなるのかもしれませんね。</p>
+<p>ダストクーラーボックスを実際にシンク下に設置してみてわかったことですが、熱を排気しないとユニット自体をどんなに効率化しても限界があることがわかりました。つまり、シンク下の1平方くらいの空間の熱を排出しないと夏場は厳しいです。室内温度が約28度くらいで、ダストクーラーボックス内部は平均15度〜18度くらいになります。冬場は冷えすぎる感じで室内温度が約10度くらいで、2〜5度くらいになることがわかりました。</p>
+<p>何をどこに設置して冷やすのかにもよると思いますが、排熱を効率良く循環させる仕組みがポイントになる感じです。</p>
+<p>良いDIYライフを！</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Tommy より		</title>
+		<link>./../index.html#comment-124</link>
+
+		<dc:creator><![CDATA[Tommy]]></dc:creator>
+		<pubDate>Wed, 23 Jun 2021 02:05:46 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=5650#comment-124</guid>
+
+					<description><![CDATA[はじめまして。楽しく拝見させていただいてます。
+情報提供に感謝いたします。
+教えてください。
+12Vのペルチェと5Vのペルチェは同じ電流電圧のペルチェですか？
+また、サンドイッチの方法ですが、ペルチェとペルチェの間は
+金属のブロックの様なもので距離をあけていますか？
+すみません。
+重ねた状態の横からの写真がありませんので、質問させて
+いただきました。
+宜しくお願いいたします。]]></description>
+			<content:encoded><![CDATA[<p>はじめまして。楽しく拝見させていただいてます。<br />
+情報提供に感謝いたします。<br />
+教えてください。<br />
+12Vのペルチェと5Vのペルチェは同じ電流電圧のペルチェですか？<br />
+また、サンドイッチの方法ですが、ペルチェとペルチェの間は<br />
+金属のブロックの様なもので距離をあけていますか？<br />
+すみません。<br />
+重ねた状態の横からの写真がありませんので、質問させて<br />
+いただきました。<br />
+宜しくお願いいたします。</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

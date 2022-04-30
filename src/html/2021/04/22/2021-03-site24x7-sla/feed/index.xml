@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	2021/03 site24x7 でのSLA状況・統計データ へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Tue, 18 May 2021 03:25:41 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		通りがかりその２ より		</title>
+		<link>./../index.html#comment-120</link>
+
+		<dc:creator><![CDATA[通りがかりその２]]></dc:creator>
+		<pubDate>Tue, 18 May 2021 02:56:21 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=10457#comment-120</guid>
+
+					<description><![CDATA[まだ検討しないとですね。]]></description>
+			<content:encoded><![CDATA[<p>まだ検討しないとですね。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-119</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Tue, 18 May 2021 02:54:36 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=10457#comment-119</guid>
+
+					<description><![CDATA[コメントするとログイン画面にジャンプしてまうな。]]></description>
+			<content:encoded><![CDATA[<p>コメントするとログイン画面にジャンプしてまうな。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		通りがかり より		</title>
+		<link>./../index.html#comment-118</link>
+
+		<dc:creator><![CDATA[通りがかり]]></dc:creator>
+		<pubDate>Tue, 18 May 2021 02:50:44 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=10457#comment-118</guid>
+
+					<description><![CDATA[気軽にコメントできるよう、メアドとか余分なのを削除。]]></description>
+			<content:encoded><![CDATA[<p>気軽にコメントできるよう、メアドとか余分なのを削除。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-117</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Tue, 18 May 2021 02:49:42 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=10457#comment-117</guid>
+
+					<description><![CDATA[コメントのテスト。]]></description>
+			<content:encoded><![CDATA[<p>コメントのテスト。</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

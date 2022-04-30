@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>Arduino Nano互換機に書き込めないだと！ &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Arduino Nano互換機に書き込めないだと！ のコメントのフィード" href="./feed/index.html">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/10154/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=10154">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2021%2F02%2F23%2Farduino-nano%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2021%2F02%2F23%2Farduino-nano%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-10154 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-10154" class="post-10154 post type-post status-publish format-standard has-post-thumbnail hentry category-arduino category-diy"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published" datetime="2021-02-23T15:17:03+09:00">2021年2月23日</time><time class="updated" datetime="2021-02-23T19:18:09+09:00">2021年2月23日</time></a> </span><span class="posted-on">更新日:2021年2月23日</span> <span class="categories"> <a href="./../../../../category/arduino/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">arduino</a>, <a href="./../../../../category/diy/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">DIY</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2021/02/arduinoNano.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2021/02/arduinoNano.png 800w, ./../../../../wp-content/uploads/2021/02/arduinoNano-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">Arduino Nano互換機に書き込めないだと！</h1>
+</div></header><div class="entry-content">
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>5年振りにArduino Nano（互換機）を触ったら書き込みできなーい！</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>あら、壊れたのかしら？</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>「マイコンボードに書き込もうとしましたが、エラーが発生しました。」と出るのよ</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div">
+<p>アリエクでまた買えば</p>
+<p>200円くらいでしょ？</p>
+</div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<p>いやはや、5年も触っていないといろいろ完璧に忘れています。ArduinoNanoという小さなArduino があるんですが、それにLチカでも書き込んで動作確認しようとしたら、書き込めずエラーが出てしまいました。持っているNano互換機はこれです。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="690" height="478" src="./../../../../wp-content/uploads/2021/02/nano.png" alt="" class="wp-image-10165"></figure></div>
+<blockquote class="wp-block-quote">
+<p>JunkHack : arduino hello world!　投稿日: 2015年3月15日<br>6年くらい前の記事で、$3でアリエクでポチったもの</p>
+<cite><a href="./../../../../2015/03/15/arduino-hello-world/index.html" target="_blank" rel="noreferrer noopener" data-wpel-link="internal">./2015/03/15/arduino-hello-world/</a></cite>
+</blockquote>
+<p>今回のエラーログは以下のようになります。</p>
+<pre class="wp-block-code"><code>avrdude: Version 6.3-20190619
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "/Applications/Arduino1.8.12.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf"
+         User configuration file is "/Users/junkhack/.avrduderc"
+         User configuration file does not exist or is not a regular file, skipping
+
+         Using Port                    : /dev/cu.wchusbserial14120
+         Using Programmer              : arduino
+         Overriding Baud Rate          : 115200
+avrdude: stk500_recv(): programmer is not responding
+avrdude: stk500_getsync() attempt 1 of 10: not in sync: resp=0x00
+：：（省略）
+avrdude: stk500_recv(): programmer is not responding
+avrdude: stk500_getsync() attempt 10 of 10: not in sync: resp=0x00
+
+avrdude done.  Thank you.
+
+マイコンボードに書き込もうとしましたが、エラーが発生しました。
+このページを参考にしてください。
+http://www.arduino.cc/en/Guide/Troubleshooting#upload</code></pre>
+<p>通信が出来ていないような感じですね。キーワード「avrdude: stk500_recv(): programmer is not responding」でググってみるとブートローダーが壊れたとか、いろいろ出て来て壊れたのかなと。でも、実は違うようです。</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#purosessaATmega328POld_Bootloaderwo_xuanbeba_da_zhang_fu"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">プロセッサ：ATmega328P(Old Bootloader)を選べば大丈夫！</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#UnowoISPnishiteNanoni_shuki_rumisuru"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">UnoをISPにしてNanoに書き込みする！</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#1_UnowoISPnishiteNanoni_shuki_rumu"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">(1) UnoをISPにして、Nanoに書き込む</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#2_mazuUnoniArduinoISPnosuketchiwo_shuki_rumu"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">(2) まず、UnoにArduinoISPのスケッチを書き込む</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#3_UnotoNanowo_pei_xiansuru"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">(3) UnoとNanoを配線する</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#4_IDEnotsurukarabutorodawo_shuki_rumu"> <span class="lwptoc_item_number">6</span> <span class="lwptoc_item_label">(4) IDEのツールからブートローダーを書き込む</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#xinshiibutorodawoNanode_que_ren"> <span class="lwptoc_item_number">7</span> <span class="lwptoc_item_label">新しいブートローダをNanoで確認</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#matome"> <span class="lwptoc_item_number">8</span> <span class="lwptoc_item_label">まとめ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#atogaki"> <span class="lwptoc_item_number">9</span> <span class="lwptoc_item_label">あとがき</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#zhe_zhenimesseji"> <span class="lwptoc_item_number">10</span> <span class="lwptoc_item_label">著者にメッセージ</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="purosessaATmega328POld_Bootloaderwo_xuanbeba_da_zhang_fu">プロセッサ：ATmega328P(Old Bootloader)を選べば大丈夫！</span></h3>
+<blockquote class="wp-block-quote">
+<p>Arduino / micro:bit / M5Stick勉強会の電録簿<br>ボード・アップデートで書き込みエラー</p>
+<cite><a href="http://www.umek.topaz.ne.jp/mameduino/boardupdate_error/" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">http://www.umek.topaz.ne.jp/mameduino/boardupdate_error/<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<p>このサイトによれば、どうやら、ボード設定メニューのプロセッサー種別選択のサブメニューにて「ATmega328P(Old Bootloader)」を選択するだけでいいようです。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="648" height="407" src="./../../../../wp-content/uploads/2021/02/ArudinoNano.png" alt="" class="wp-image-10155"></figure></div>
+<p>はい、ちゃんと書き込めました。どうやら、Nanoの新しいやつは、通信速度が112.5kbps<strong> </strong>ということで、古いNanoは57.6kbpsということのようです。</p>
+<p>ブートローダーを新しくすることもできるようで、もう一台arduinoがあれば以下のように書き込めるようです。</p>
+<blockquote class="wp-block-quote">
+<p>Arduino as ISP and Arduino Bootloaders</p>
+<cite><a href="https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">https://www.arduino.cc/en/Tutorial/BuiltInExamples/ArduinoISP<span class="wpel-icon wpel-image wpel-icon-1"></span></a></cite>
+</blockquote>
+<p><s>また今度やってみようかな。今日はいろいろ違う目的がありますので。</s></p>
+<p>いや、こういうのはわかった時に即実行が良いですね。ブログのネタにもなるし少し休憩後、書き込んでみました。</p>
+<h3><span id="UnowoISPnishiteNanoni_shuki_rumisuru">UnoをISPにしてNanoに書き込みする！</span></h3>
+<p>こういうのは全体の流れを把握するのが大事です。大きくは以下と理解。</p>
+<p>(1) UnoをISPにして、Nanoに書き込む<br>　　→　手持ちにUnoがあったのですが、それ以外でもOK<br>(2) まず、UnoにArduinoISPのスケッチを書き込む<br>　　→　スケッチ例＞11.ArduinoISP＞ArduinoISP<br>　　　　※書き込んだら、次に配線をしますのでUSBを外します<br>(3) UnoとNanoを配線する<br>　　→　配線は６本<br>(4) IDEのツールからブートローダーを書き込む<br>　　→　UnoをUSBでPCに接続。その後書き込みます</p>
+<h3><span id="1_UnowoISPnishiteNanoni_shuki_rumu">(1) UnoをISPにして、Nanoに書き込む</span></h3>
+<p>ISPとは、インサーキットシリアルプログラマーということで、ICSPとも略されるようですね。基板に繋いだまま内蔵メモリにプログラムを書き込むことを言うようです。今回の例だと、Nanoのブートローダーを書き込むにあたり、UnoをISPにして書き込むわけです！　</p>
+<h3><span id="2_mazuUnoniArduinoISPnosuketchiwo_shuki_rumu">(2) まず、UnoにArduinoISPのスケッチを書き込む</span></h3>
+<p>アリエクで昔、本物のUnoをポチっていました。裏が白い基板のです。</p>
+<figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="381" src="./../../../../wp-content/uploads/2021/02/ss-uno-1024x381.png" alt="" class="wp-image-10160" srcset="./../../../../wp-content/uploads/2021/02/ss-uno-1024x381.png 1024w, ./../../../../wp-content/uploads/2021/02/ss-uno-768x286.png 768w, ./../../../../wp-content/uploads/2021/02/ss-uno-984x366.png 984w, ./../../../../wp-content/uploads/2021/02/ss-uno.png 1196w" sizes="(max-width: 1024px) 100vw, 1024px"></figure><p>まずは、ISPのスケッチをIDEから引っ張りだしてきて、Unoに書き込みます。</p>
+<pre class="wp-block-code"><code>スケッチ例 &gt; 11.ArduinoISP &gt; ArduinoISP</code></pre>
+<p>次に配線しますので、USBを外しておきます。</p>
+<h3><span id="3_UnotoNanowo_pei_xiansuru">(3) UnoとNanoを配線する</span></h3>
+<p>配線は６本で、こんな感じです。写真ではUSBが接続さていますが書き込みが終わったときに撮ったからです。配線するときは、外してやってくださいね。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="683" height="512" src="./../../../../wp-content/uploads/2021/02/IMG_20210223_114749_jpg.png" alt="" class="wp-image-10159"></figure></div>
+<div class="wp-block-jetpack-markdown"><table>
+<thead><tr>
+<th>ISP UNO</th>
+<th>書込ターゲットNANO</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>D13</td>
+<td>D13</td>
+</tr>
+<tr>
+<td>D12</td>
+<td>D12</td>
+</tr>
+<tr>
+<td>D11</td>
+<td>D11</td>
+</tr>
+<tr>
+<td>D10</td>
+<td>RST</td>
+</tr>
+<tr>
+<td>+5V</td>
+<td>+5V</td>
+</tr>
+<tr>
+<td>GND</td>
+<td>GND</td>
+</tr>
+</tbody>
+</table></div>
+<p>実体配線図だとこういうことですね。</p>
+<figure class="wp-block-image size-large"><img loading="lazy" width="800" height="877" src="./../../../../wp-content/uploads/2021/02/ArduinoUNOtoUNO_ISP2.jpg" alt="" class="wp-image-10161" srcset="./../../../../wp-content/uploads/2021/02/ArduinoUNOtoUNO_ISP2.jpg 800w, ./../../../../wp-content/uploads/2021/02/ArduinoUNOtoUNO_ISP2-768x842.jpg 768w" sizes="(max-width: 800px) 100vw, 800px"></figure><p>さて、書き込みましょうか！　USBをUno（ISP）に接続します。</p>
+<h3><span id="4_IDEnotsurukarabutorodawo_shuki_rumu">(4) IDEのツールからブートローダーを書き込む</span></h3>
+<figure class="wp-block-image size-large"><img loading="lazy" width="776" height="703" src="./../../../../wp-content/uploads/2021/02/Uno-isp-to-nano.png" alt="" class="wp-image-10162" srcset="./../../../../wp-content/uploads/2021/02/Uno-isp-to-nano.png 776w, ./../../../../wp-content/uploads/2021/02/Uno-isp-to-nano-768x696.png 768w" sizes="(max-width: 776px) 100vw, 776px"></figure><p>ツールからボート、プロセッサ、シリアルポート、書込装置を程よく選択して「ブートローダを書き込む」でOKです。ログには以下のように流れました。</p>
+<pre class="wp-block-code"><code>/Applications/Arduino1.8.12.app/Contents/Java/hardware/tools/avr/bin/avrdude -C/Applications/Arduino1.8.12.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf -v -patmega328p -cstk500v1 -P/dev/cu.usbmodem14111 -b19200 -Uflash:w:/Applications/Arduino1.8.12.app/Contents/Java/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega328.hex:i -Ulock:w:0x0F:m 
+
+avrdude: Version 6.3-20190619
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "/Applications/Arduino1.8.12.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf"
+         User configuration file is "/Users/junkhack/.avrduderc"
+         User configuration file does not exist or is not a regular file, skipping
+
+         Using Port                    : /dev/cu.usbmodem14111
+         Using Programmer              : stk500v1
+         Overriding Baud Rate          : 19200
+Reading | ################################################## | 100% 0.01s
+
+avrdude: verifying ...
+avrdude: 1 bytes of lock verified
+avrdude: reading input file "0xFD"
+avrdude: writing efuse (1 bytes):
+
+Writing | ################################################## | 100% 0.01s
+
+avrdude: 1 bytes of efuse written
+avrdude: verifying efuse memory against 0xFD:
+avrdude: load data efuse data from input file 0xFD:
+avrdude: input file 0xFD contains 1 bytes
+avrdude: reading on-chip efuse data:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: verifying ...
+avrdude: 1 bytes of efuse verified
+avrdude: reading input file "0xDA"
+avrdude: writing hfuse (1 bytes):
+
+Writing | ################################################## | 100% 0.01s
+
+avrdude: 1 bytes of hfuse written
+avrdude: verifying hfuse memory against 0xDA:
+avrdude: load data hfuse data from input file 0xDA:
+avrdude: input file 0xDA contains 1 bytes
+avrdude: reading on-chip hfuse data:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: verifying ...
+avrdude: 1 bytes of hfuse verified
+avrdude: reading input file "0xFF"
+avrdude: writing lfuse (1 bytes):
+
+Writing | ################################################## | 100% 0.01s
+
+avrdude: 1 bytes of lfuse written
+avrdude: verifying lfuse memory against 0xFF:
+avrdude: load data lfuse data from input file 0xFF:
+avrdude: input file 0xFF contains 1 bytes
+avrdude: reading on-chip lfuse data:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: verifying ...
+avrdude: 1 bytes of lfuse verified
+
+avrdude done.  Thank you.
+
+         AVR Part                      : ATmega328P
+         Chip Erase delay              : 9000 us
+         PAGEL                         : PD7
+         BS2                           : PC2
+         RESET disposition             : dedicated
+         RETRY pulse                   : SCK
+         serial program mode           : yes
+         parallel program mode         : yes
+         Timeout                       : 200
+         StabDelay                     : 100
+         CmdexeDelay                   : 25
+         SyncLoops                     : 32
+         ByteDelay                     : 0
+         PollIndex                     : 3
+         PollValue                     : 0x53
+         Memory Detail                 :
+
+                                  Block Poll               Page                       Polled
+           Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+           ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+           eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+           flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+           lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+           signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+
+         Programmer Type : STK500
+         Description     : Atmel STK500 Version 1.x firmware
+         Hardware Version: 2
+         Firmware Version: 1.18
+         Topcard         : Unknown
+         Vtarget         : 0.0 V
+         Varef           : 0.0 V
+         Oscillator      : Off
+         SCK period      : 0.1 us
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.02s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+avrdude: NOTE: "flash" memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file "/Applications/Arduino1.8.12.app/Contents/Java/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega328.hex"
+avrdude: writing flash (32768 bytes):
+
+Writing | ################################################## | 100% 0.00s
+
+avrdude: 32768 bytes of flash written
+avrdude: verifying flash memory against /Applications/Arduino1.8.12.app/Contents/Java/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega328.hex:
+avrdude: load data flash data from input file /Applications/Arduino1.8.12.app/Contents/Java/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega328.hex:
+avrdude: input file /Applications/Arduino1.8.12.app/Contents/Java/hardware/arduino/avr/bootloaders/optiboot/optiboot_atmega328.hex contains 32768 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.00s
+
+avrdude: verifying ...
+avrdude: 32768 bytes of flash verified
+avrdude: reading input file "0x0F"
+avrdude: writing lock (1 bytes):
+
+Writing | ################################################## | 100% 0.02s
+
+avrdude: 1 bytes of lock written
+avrdude: verifying lock memory against 0x0F:
+avrdude: load data lock data from input file 0x0F:
+avrdude: input file 0x0F contains 1 bytes
+avrdude: reading on-chip lock data:
+
+Reading | ################################################## | 100% 0.01s
+
+avrdude: verifying ...
+avrdude: 1 bytes of lock verified
+
+avrdude done.  Thank you.</code></pre>
+<h3><span id="xinshiibutorodawoNanode_que_ren">新しいブートローダをNanoで確認</span></h3>
+<p>今書き込んだNanoの動作確認です。ボード設定メニューのプロセッサー種別選択のサブメニューにて「ATmega328P」を選択します。Old Bootloaderじゃないやつです。</p>
+<p>LEDブリンクをNanoに書き込み！　以下がログですが、115200kbpsで通信していますね。</p>
+<pre class="wp-block-code"><code>avrdude: Version 6.3-20190619
+         Copyright (c) 2000-2005 Brian Dean, http://www.bdmicro.com/
+         Copyright (c) 2007-2014 Joerg Wunsch
+
+         System wide configuration file is "/Applications/Arduino1.8.12.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf"
+         User configuration file is "/Users/junkhack/.avrduderc"
+         User configuration file does not exist or is not a regular file, skipping
+
+         Using Port                    : /dev/cu.wchusbserial14120
+         Using Programmer              : arduino
+         Overriding Baud Rate          : 115200
+         AVR Part                      : ATmega328P
+         Chip Erase delay              : 9000 us
+         PAGEL                         : PD7
+         BS2                           : PC2
+         RESET disposition             : dedicated
+         RETRY pulse                   : SCK
+         serial program mode           : yes
+         parallel program mode         : yes
+         Timeout                       : 200
+         StabDelay                     : 100
+         CmdexeDelay                   : 25
+         SyncLoops                     : 32
+         ByteDelay                     : 0
+         PollIndex                     : 3
+         PollValue                     : 0x53
+         Memory Detail                 :
+
+                                  Block Poll               Page                       Polled
+           Memory Type Mode Delay Size  Indx Paged  Size   Size #Pages MinW  MaxW   ReadBack
+           ----------- ---- ----- ----- ---- ------ ------ ---- ------ ----- ----- ---------
+           eeprom        65    20     4    0 no       1024    4      0  3600  3600 0xff 0xff
+           flash         65     6   128    0 yes     32768  128    256  4500  4500 0xff 0xff
+           lfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           hfuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           efuse          0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           lock           0     0     0    0 no          1    0      0  4500  4500 0x00 0x00
+           calibration    0     0     0    0 no          1    0      0     0     0 0x00 0x00
+           signature      0     0     0    0 no          3    0      0     0     0 0x00 0x00
+
+         Programmer Type : Arduino
+         Description     : Arduino
+         Hardware Version: 3
+         Firmware Version: 4.4
+         Vtarget         : 0.3 V
+         Varef           : 0.3 V
+         Oscillator      : 28.800 kHz
+         SCK period      : 3.3 us
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading | ################################################## | 100% 0.02s
+
+avrdude: Device signature = 0x1e950f (probably m328p)
+avrdude: reading input file "/var/folders/f1/5d6ycdnj6v58mcq9kn4b3ksm0000gn/T/arduino_build_539320/Blink.ino.hex"
+avrdude: writing flash (924 bytes):
+
+Writing | ################################################## | 100% 0.48s
+
+avrdude: 924 bytes of flash written
+avrdude: verifying flash memory against /var/folders/f1/5d6ycdnj6v58mcq9kn4b3ksm0000gn/T/arduino_build_539320/Blink.ino.hex:
+avrdude: load data flash data from input file /var/folders/f1/5d6ycdnj6v58mcq9kn4b3ksm0000gn/T/arduino_build_539320/Blink.ino.hex:
+avrdude: input file /var/folders/f1/5d6ycdnj6v58mcq9kn4b3ksm0000gn/T/arduino_build_539320/Blink.ino.hex contains 924 bytes
+avrdude: reading on-chip flash data:
+
+Reading | ################################################## | 100% 0.45s
+
+avrdude: verifying ...
+avrdude: 924 bytes of flash verified
+
+avrdude done.  Thank you.</code></pre>
+<p>flash verified　が出ていますね。うまくいったようです！　ログをよく見てみるとファームウェアバージョンは4.4ということのようです。</p>
+<blockquote class="wp-block-quote"><p>Hardware Version: 3<br>Firmware Version: 4.4</p></blockquote>
+<h3><span id="matome">まとめ</span></h3>
+<p>今回、なんとなくわかったのは以下となります。</p>
+<p>・ブートローダが古ければ、Arduino を書込機器（ISP）にして新しくできる<br>・古いArduinoなら、プロセッサー種別選択で「ATmega328P(Old Bootloader)」を選択<br>・違いは、通信速度のようです。それ以外の違いはまだ不明</p>
+<h3><span id="atogaki">あとがき</span></h3>
+<p>5年も使っていなかったので、扱いが悪くて壊れたのかな？　と思っていましたが、対応方法があってよかったです！　まさかブートローダが新しくなっていてIDEから古いのを選択しないとダメだとは思っていませんでした。壊れていなくてよかったです。</p>
+<p>5年経過しているので、いろいろな環境が変わっていますね。5年前よりいろいろ進化しているので、ハマることもあるかもですが以前より楽しいことができそうな気がします。</p>
+<h3><span id="zhe_zhenimesseji">著者にメッセージ</span></h3>
+<p>間違いのご指摘など、コメントじゃなくて、個人的にやりとりしたい場合は<a class="c-link-text" href="./../../../../mail/index.html" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">こちらから</a>どうぞ。お返事が遅くなるときもありますが、ご了承を。</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../20/arudio-seeeduino-xiao/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">久しぶりに一目惚れしたArudio互換機のSeeeduino XIAO</a></div>
+<div class="nav-next"><a href="./../../26/xiao-node-j5/index.html" rel="next noopener noreferrer" data-wpel-link="internal">XIAOとスマホだけでnode.jsのJohnny-Fiveを動かす最短コースをご案内！</a></div>
+</div></nav><div id="comments" class="comments-area"><div class="comments-wrapper">
+<h2 class="comments-title"> 「<span>Arduino Nano互換機に書き込めないだと！</span>」への1件のフィードバック</h2>
+<ol class="comment-list"><li class="comment even thread-even depth-1" id="li-comment-131"><article id="comment-131" class="comment"><footer class="comment-meta"><div class="comment-author vcard"> <img alt="" src="https://secure.gravatar.com/avatar/0626fb92c74856143d55e031bf0131aa?s=42&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/0626fb92c74856143d55e031bf0131aa?s=84&#038;d=mm&#038;r=g 2x" class="avatar avatar-42 photo" height="42" width="42" loading="lazy"> <b class="fn"> 吉田　純造 <span class="says">より:</span> </b>
+</div>
+<div class="comment-metadata"> <a href="./index.html#comment-131" data-wpel-link="internal" rel="noopener noreferrer"><time datetime="2021-10-23T12:32:26+09:00"> 2021年10月23日 12:32 PM </time></a>
+</div></footer><div class="comment-content"><p>できました<br> ありがとう</p></div></article></li></ol>
+<p class="no-comments">コメントは受け付けていません。</p>
+</div></div></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="word_balloon_user_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_user.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_skin_talk-css" href="./../../../../wp-content/plugins/word-balloon/css/skin/word_balloon_talk.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_inview_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_inview.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver" id="polyfill_IntersectionObserver-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_84a2606fca297d1a3a38ebd400eae2bd.js"></script>
+</body>
+</html>

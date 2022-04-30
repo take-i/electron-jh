@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	このブログは、スマートフォンの中に引越ししました！ へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Mon, 26 Oct 2020 19:39:56 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		通りがかり より		</title>
+		<link>./../index.html#comment-107</link>
+
+		<dc:creator><![CDATA[通りがかり]]></dc:creator>
+		<pubDate>Mon, 26 Oct 2020 19:39:56 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=9510#comment-107</guid>
+
+					<description><![CDATA[通りがかりのコメントです。記念に。]]></description>
+			<content:encoded><![CDATA[<p>通りがかりのコメントです。記念に。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-104</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Sun, 20 Sep 2020 06:47:53 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=9510#comment-104</guid>
+
+					<description><![CDATA[&lt;a href=&quot;./../index.html#comment-103&quot;&gt;ぴー&lt;/a&gt; への返信。
+
+オー、出来てる?みたいダネー!]]></description>
+			<content:encoded><![CDATA[<p><a href="./../index.html#comment-103" data-wpel-link="internal" rel="noopener noreferrer">ぴー</a> への返信。</p>
+<p>オー、出来てる?みたいダネー!</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		ぴー より		</title>
+		<link>./../index.html#comment-103</link>
+
+		<dc:creator><![CDATA[ぴー]]></dc:creator>
+		<pubDate>Sun, 20 Sep 2020 06:44:38 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=9510#comment-103</guid>
+
+					<description><![CDATA[ampページからもコメント出来るのかしらー?]]></description>
+			<content:encoded><![CDATA[<p>ampページからもコメント出来るのかしらー?</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

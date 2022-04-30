@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>備忘録：Ryzen 5 3600のLinuxでUnixBench &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/10588/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=10588">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2021%2F05%2F30%2Fryzen-5-3600-linux-unixbench%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2021%2F05%2F30%2Fryzen-5-3600-linux-unixbench%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-10588 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-10588" class="post-10588 post type-post status-publish format-standard has-post-thumbnail hentry category-linux category-osx"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published" datetime="2021-05-30T03:04:36+09:00">2021年5月30日</time><time class="updated" datetime="2021-05-30T03:04:39+09:00">2021年5月30日</time></a> </span><span class="posted-on">更新日:2021年5月30日</span> <span class="categories"> <a href="./../../../../category/linux/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Linux</a>, <a href="./../../../../category/osx/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">osx</a></span>
+</div>
+<div class="flex"> <img width="800" height="800" src="./../../../../wp-content/uploads/2021/05/ryzen5-3600-unixbench.png" class="attachment-full size-full wp-post-image" alt="" loading="lazy" srcset="./../../../../wp-content/uploads/2021/05/ryzen5-3600-unixbench.png 800w, ./../../../../wp-content/uploads/2021/05/ryzen5-3600-unixbench-768x768.png 768w" sizes="(max-width: 800px) 100vw, 800px"><h1 class="entry-title">備忘録：Ryzen 5 3600のLinuxでUnixBench</h1>
+</div></header><div class="entry-content">
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>WordPressの仕事が終わったんで、今日は好きなことやるよ！</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>WordPressの仕事もやってるのね！</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex"><div class="w_b_wrap w_b_wrap_talk w_b_L w_b_flex w_b_div">
+<div class="w_b_ava_box w_b_relative w_b_ava_L w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_L w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/abata.png" width="96" height="96" alt="じゃんくはっく" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">じゃんくはっく</div>
+</div>
+<div class="w_b_bal_box w_b_bal_L w_b_relative w_b_direction_L w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_L w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_L w_b_shadow_L w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>だいたい、何でも頼まれたらやっちゃうよ！w</p></div></div></div></div>
+</div>
+</div></div></div>
+<div class="wp-block-word-balloon-word-balloon-block"><div class="w_b_box w_b_w100 w_b_flex w_b_mla w_b_jc_fe"><div class="w_b_wrap w_b_wrap_talk w_b_R w_b_flex w_b_jc_fe w_b_div">
+<div class="w_b_bal_box w_b_bal_R w_b_relative w_b_direction_R w_b_w100 w_b_div">
+<div class="w_b_space w_b_mp0 w_b_div"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1" height="38" viewbox="0 0 1 1" fill="transparent" stroke="transparent" stroke-miterlimit="10" class="w_b_db w_b_mp0"><polygon fill="transparent" stroke="transparent" points="0,1 0,1 0,1 0,1 "></polygon></svg></div>
+<div class="w_b_bal_outer w_b_flex w_b_mp0 w_b_relative w_b_div"><div class="w_b_bal_wrap w_b_bal_wrap_R w_b_div"><div class="w_b_bal w_b_relative w_b_talk w_b_talk_R w_b_shadow_R w_b_ta_L w_b_div"><div class="w_b_quote w_b_div"><p>で、Linuxはubuntuですか？</p></div></div></div></div>
+</div>
+<div class="w_b_ava_box w_b_relative w_b_ava_R w_b_col w_b_f_n w_b_div">
+<div class="w_b_icon_wrap w_b_relative w_b_div"><div class="w_b_ava_wrap w_b_direction_R w_b_mp0 w_b_div"><div class="w_b_ava_effect w_b_relative w_b_oh w_b_radius w_b_size_M w_b_div"> <img src="./../../../../wp-content/uploads/2020/09/pi-.png" width="96" height="96" alt="ぴー" class="w_b_ava_img w_b_w100 w_b_h100  w_b_mp0 w_b_img">
+</div></div></div>
+<div class="w_b_name w_b_w100 w_b_lh w_b_name_C w_b_ta_C w_b_mp0 w_b_div">ぴー</div>
+</div>
+</div></div></div>
+<p>そういえば、だいぶ前にRyzen 5 3600をメインマシンにしたんですが、これでLinux動かしてなくて、UnixBenchのスコアが気になっていました。Diskはさくっと入れ替えられるよう、2.5inchの脱着ベイをつけてありますので今回はこのマシンにUbuntuを入れてUnixBenchを計測してみようと思います。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img loading="lazy" width="522" height="577" src="./../../../../wp-content/uploads/2021/05/ryzen5.png" alt="" class="wp-image-10589"></figure></div>
+<blockquote class="wp-block-quote">
+<p>Intelチップ、2022年までしばらくさようなら！<br><em>投稿日: <a href="./../../../../2020/03/13/goodby-intel/index.html" data-wpel-link="internal" rel="noopener noreferrer"><time datetime="2020-03-13T06:20:53+09:00">2020年3月13日</time></a> 更新日:2020年11月13日</em></p>
+<cite><a href="./../../../../2020/03/13/goodby-intel/index.html" target="_blank" rel="noreferrer noopener" data-wpel-link="internal">Link</a></cite>
+</blockquote>
+<p>もう１年以上使っていますね。intelがRyzenを盛り返すまで繋ぎで使っているんですが、なかなかintelは画期的なのを出しませんね。AppleはM1のオリジナルCPU出してきたし、５年後はintelが昔のAMDみたいになっていなければいいんですが。</p> <!--noindex--><div class="lwptoc lwptoc-center lwptoc-baseItems lwptoc-white lwptoc-notInherit" data-smooth-scroll="1" data-smooth-scroll-offset="24"><div class="lwptoc_i" style="width:80%">
+<div class="lwptoc_header"> <b class="lwptoc_title" style="font-weight:800;">もくじ</b> <span class="lwptoc_toggle"> <a href="#" class="lwptoc_toggle_label" data-label="表示">非表示</a> </span>
+</div>
+<div class="lwptoc_items lwptoc_items-visible"><div class="lwptoc_itemWrap">
+<div class="lwptoc_item"> <a href="#Ubuntu_20041_LTSdeUnixBench"> <span class="lwptoc_item_number">1</span> <span class="lwptoc_item_label">Ubuntu 20.04.1 LTSでUnixBench</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#matome"> <span class="lwptoc_item_number">2</span> <span class="lwptoc_item_label">まとめ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#atogaki"> <span class="lwptoc_item_number">3</span> <span class="lwptoc_item_label">あとがき</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#zhe_zhenimesseji"> <span class="lwptoc_item_number">4</span> <span class="lwptoc_item_label">著者にメッセージ</span> </a>
+</div>
+<div class="lwptoc_item"> <a href="#guan_lian_ji_shi"> <span class="lwptoc_item_number">5</span> <span class="lwptoc_item_label">関連記事</span> </a>
+</div>
+</div></div>
+</div></div>
+<!--/noindex--><h3><span id="Ubuntu_20041_LTSdeUnixBench">Ubuntu 20.04.1 LTSでUnixBench</span></h3>
+<p>MacOS10.14.x でUnixBenchを計測した時は、マルチCPUで2323.1でした。Ubuntu 20.04.1 LTSで、Ryzen 5 3600は以下のスコアです。</p>
+<blockquote class="wp-block-quote"><p>UNIX Benchmarks (Version 5.1.3) on AMD Ryzen 5 3600<br><br>Single-Core Score：2422.6<br>Multi-Core Score：7919.0</p></blockquote>
+<p>詳細は以下です。SSDは、SLCのsata2 64GBです。</p>
+<pre class="wp-block-code"><code>   BYTE UNIX Benchmarks (Version 5.1.3)
+
+   System: mone: GNU/Linux
+   OS: GNU/Linux -- 5.4.0-42-generic -- #46-Ubuntu SMP Fri Jul 10 00:24:02 UTC 2020
+   Machine: x86_64 (x86_64)
+   Language: en_US.utf8 (charmap="UTF-8", collate="UTF-8")
+------------------------------------------------------------------------
+Benchmark Run: 日  5月 30 2021 00:29:08 - 00:57:06
+12 CPUs in system; running 1 parallel copy of tests
+
+Dhrystone 2 using register variables       50630225.0 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                     9059.2 MWIPS (9.9 s, 7 samples)
+Execl Throughput                               7946.0 lps   (29.9 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks       1256459.1 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          338174.5 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       3192098.2 KBps  (30.0 s, 2 samples)
+Pipe Throughput                             2633467.7 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                 364452.5 lps   (10.0 s, 7 samples)
+Process Creation                              10672.3 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                  10448.3 lpm   (60.0 s, 2 samples)
+Shell Scripts (8 concurrent)                   5218.2 lpm   (60.0 s, 2 samples)
+System Call Overhead                        3716288.0 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0   50630225.0   4338.5
+Double-Precision Whetstone                       55.0       9059.2   1647.1
+Execl Throughput                                 43.0       7946.0   1847.9
+File Copy 1024 bufsize 2000 maxblocks          3960.0    1256459.1   3172.9
+File Copy 256 bufsize 500 maxblocks            1655.0     338174.5   2043.4
+File Copy 4096 bufsize 8000 maxblocks          5800.0    3192098.2   5503.6
+Pipe Throughput                               12440.0    2633467.7   2116.9
+Pipe-based Context Switching                   4000.0     364452.5    911.1
+Process Creation                                126.0      10672.3    847.0
+Shell Scripts (1 concurrent)                     42.4      10448.3   2464.2
+Shell Scripts (8 concurrent)                      6.0       5218.2   8697.0
+System Call Overhead                          15000.0    3716288.0   2477.5
+                                                                   ========
+System Benchmarks Index Score                                        2422.6
+
+------------------------------------------------------------------------
+Benchmark Run: 日  5月 30 2021 00:57:06 - 01:25:17
+12 CPUs in system; running 12 parallel copies of tests
+
+Dhrystone 2 using register variables      377415057.2 lps   (10.0 s, 7 samples)
+Double-Precision Whetstone                    85109.8 MWIPS (9.8 s, 7 samples)
+Execl Throughput                              38242.8 lps   (29.9 s, 2 samples)
+File Copy 1024 bufsize 2000 maxblocks        870656.3 KBps  (30.0 s, 2 samples)
+File Copy 256 bufsize 500 maxblocks          231207.7 KBps  (30.0 s, 2 samples)
+File Copy 4096 bufsize 8000 maxblocks       2754722.9 KBps  (30.0 s, 2 samples)
+Pipe Throughput                            17510677.3 lps   (10.0 s, 7 samples)
+Pipe-based Context Switching                1622682.3 lps   (10.0 s, 7 samples)
+Process Creation                              70024.7 lps   (30.0 s, 2 samples)
+Shell Scripts (1 concurrent)                  67019.5 lpm   (60.0 s, 2 samples)
+Shell Scripts (8 concurrent)                  10011.7 lpm   (60.0 s, 2 samples)
+System Call Overhead                       16785255.3 lps   (10.0 s, 7 samples)
+
+System Benchmarks Index Values               BASELINE       RESULT    INDEX
+Dhrystone 2 using register variables         116700.0  377415057.2  32340.6
+Double-Precision Whetstone                       55.0      85109.8  15474.5
+Execl Throughput                                 43.0      38242.8   8893.7
+File Copy 1024 bufsize 2000 maxblocks          3960.0     870656.3   2198.6
+File Copy 256 bufsize 500 maxblocks            1655.0     231207.7   1397.0
+File Copy 4096 bufsize 8000 maxblocks          5800.0    2754722.9   4749.5
+Pipe Throughput                               12440.0   17510677.3  14076.1
+Pipe-based Context Switching                   4000.0    1622682.3   4056.7
+Process Creation                                126.0      70024.7   5557.5
+Shell Scripts (1 concurrent)                     42.4      67019.5  15806.5
+Shell Scripts (8 concurrent)                      6.0      10011.7  16686.2
+System Call Overhead                          15000.0   16785255.3  11190.2
+                                                                   ========
+System Benchmarks Index Score                                        7919.0</code></pre>
+<p>同じRyzenだと、<em>ThinkCentre M75q-1 Tiny</em>　の<em>Ryzen 5 Pro 3400GE (3.30GHz, 2MB)</em>　が以下のスコアです。</p>
+<blockquote class="wp-block-quote"><p>UNIX Benchmarks (Version 5.1.3) on <em>Ryzen 5 Pro 3400GE (3.30GHz, 2MB)</em><br><br>Single-Core Score：2151.7<br>Multi-Core Score：6552.1</p></blockquote>
+<p>Ryzen 5 3600のが速いですが、このマシンも頑張っていますね。これは以下で紹介しています。</p>
+<blockquote class="wp-block-quote">
+<p>130W電源でThinkCentre M75q-1 Tinyのベンチマーク</p>
+<cite><a href="./../../../../2020/07/02/130wm75q-1-tinybench/index.html" target="_blank" rel="noreferrer noopener" data-wpel-link="internal">URL</a></cite>
+</blockquote>
+<p>ちなみに、このマシンはWEBサーバにしようと思いっていたのですがフォートナイトやるっていうんで息子に持っていかれてしまいました。。。なので、このブログはスマホPixel3のWEBサーバでがんばっています！</p>
+<h3><span id="matome">まとめ</span></h3>
+<p>今回、なんとなくわかったのは以下となります。</p>
+<p>・Ryzen 5 3600 は、シングル2422.6　マルチ7919.0　のUnixbenchスコア<br>・2021/05/30時点でintelの次のCPUは、「Alder Lake」を2021年後半に発売予定<br>・これは10nmのようです<br>・特に困っていないので、7nmとか5nmのintelが出るまでじっくり待ちます</p>
+<h3><span id="atogaki">あとがき</span></h3>
+<p>Intelがこのまま、黙ってAMDを先行させるだけではないと思っていますが、苦戦しているようです。まぁ、しかし、普通の作業をしているだけであれば、Core i7 3770; (Ivy Bridge)でもぜんぜん十分で、いまだにサブマシン（メインマシンに近い存在）で頑張っています。このCPUは、第3世代のもので、今から約10年前にリリースされました。macosも10.8くらいから10.15（現在）でずっと使っています。重い作業するのは、ビルドするときくらいでしょうか。あとはアプリケーションを同時に30個くらい開いたりしながら作業するとき、少しもたつくくらいです。</p>
+<h3><span id="zhe_zhenimesseji">著者にメッセージ</span></h3>
+<p>間違いのご指摘など、コメントじゃなくて、個人的にやりとりしたい場合は<a class="c-link-text" href="./../../../../mail/index.html" target="_blank" rel="noopener noreferrer" data-wpel-link="internal">こちらから</a>どうぞ。お返事が遅くなるときもありますが、ご了承を。</p>
+<div class="related_content" style="clear:both;">
+<h3 class="widget-title"><span id="guan_lian_ji_shi">関連記事</span></h3>
+<ul class="related-posts">
+<li class="related-post"> <a href="./../../../../2020/03/13/goodby-intel/index.html" data-wpel-link="internal" rel="noopener noreferrer">Intelチップ、2022年までしばらくさようなら！</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/07/02/130wm75q-1-tinybench/index.html" data-wpel-link="internal" rel="noopener noreferrer">130W電源でThinkCentre M75q-1 Tinyのベンチマーク</a>
+</li>
+<li class="related-post"> <a href="./../../../../2015/07/12/osx10-9-e381a7-unixbench/index.html" data-wpel-link="internal" rel="noopener noreferrer">osx10.9 で UnixBench</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/05/14/thinkcentre-m75q-1-tiny-unixbench/index.html" data-wpel-link="internal" rel="noopener noreferrer">ThinkCentre M75q-1 TinyのUnixBench</a>
+</li>
+<li class="related-post"> <a href="./../../../../2020/03/14/thinkcentre-m75q-1-tiny/index.html" data-wpel-link="internal" rel="noopener noreferrer">3.3万で買えるマシン！サーバ用候補のThinkCentre M75q-1 Tiny:価格.com限定モデル</a>
+</li>
+</ul>
+</div>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../20/isbn-10_4777521494/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">工学社 の本、androidの改造　に掲載されたよ！</a></div>
+<div class="nav-next"><a href="./../../../06/01/termux-pkg-update-error/index.html" rel="next noopener noreferrer" data-wpel-link="internal">Termuxでpkg updateできなくなって困ってる人へ</a></div>
+</div></nav></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <link rel="stylesheet" id="word_balloon_user_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_user.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_skin_talk-css" href="./../../../../wp-content/plugins/word-balloon/css/skin/word_balloon_talk.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="word_balloon_inview_style-css" href="./../../../../wp-content/plugins/word-balloon/css/word_balloon_inview.min.css?ver=4.18.4" type="text/css" media="all">
+<link rel="stylesheet" id="lwptoc-main-css" href="./../../../../wp-content/plugins/luckywp-table-of-contents/front/assets/main.min.css?ver=2.1.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver" id="polyfill_IntersectionObserver-js"></script> <style>.lwptoc .lwptoc_i{border:1px solid #aaaaaa;}.lwptoc_header{color:#232323;}.lwptoc .lwptoc_i A{color:#3d3d3d;}.lwptoc .lwptoc_i A:hover,.lwptoc .lwptoc_i A:focus,.lwptoc .lwptoc_i A:active{color:#0a0a0a;border-color:#0a0a0a;}.lwptoc .lwptoc_i A:visited{color:#5b5b5b;}</style> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_84a2606fca297d1a3a38ebd400eae2bd.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; フィード" href="./../../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; Yahoo フィード" href="./../../../../feed/yahoo/index.html">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; SmartNews フィード" href="./../../../../feed/smartnews/index.html"> <noscript id="aonoscrcss"></noscript>
+<title>スマホサーバの構成をNGINX+php-fpm+mariadbの構成にしてWordPressを動かして速度を計測しておいた &#8211; JunkHack</title>
+<meta name="robots" content="max-image-preview:large">
+<link rel="dns-prefetch" href="//www.googletagmanager.com">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+<link rel="alternate" type="application/rss+xml" title="JunkHack &raquo; スマホサーバの構成をNGINX+php-fpm+mariadbの構成にしてWordPressを動かして速度を計測しておいた のコメントのフィード" href="./feed/index.html">
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../../wp-includes/css/dist/block-library/style.min.css?ver=5.8.4" type="text/css" media="all">
+<link rel="stylesheet" id="wpel-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_04d23f0dc44b526ca48d1d564eb7537c.css?ver=2.50" type="text/css" media="all">
+<link rel="stylesheet" id="wpfront-scroll-top-css" href="./../../../../wp-content/plugins/wpfront-scroll-top/css/wpfront-scroll-top.min.css?ver=2.0.7.08086" type="text/css" media="all">
+<link rel="stylesheet" id="related-frontend-css-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_ce8bbdb7cabcf5f0fa8d28d9868b7638.css?ver=0.1.0" type="text/css" media="all">
+<link rel="stylesheet" id="hew-fonts-css" href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CNoto+Serif%3A400%2C700%2C400italic%2C700italic&#038;subset=latin" type="text/css" media="all">
+<link rel="stylesheet" id="genericons-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_c14dd6e84e694a66c7e27f11220ed49a.css?ver=3.4.1" type="text/css" media="all">
+<link rel="stylesheet" id="hew-style-css" href="./../../../../wp-content/cache/autoptimize/css/autoptimize_single_923a46d76606f1b43e3f3639ca289d5f.css?ver=5.8.4" type="text/css" media="all"> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-3.5.1.min.js" id="jquery-core-js"></script> <script type="text/javascript" src="./../../../../wp-content/plugins/jquery-manager/assets/js/jquery-migrate-3.3.0.min.js" id="jquery-migrate-js"></script>  <script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-199105184-1" id="google_gtagjs-js" async></script> <script type="text/javascript" id="google_gtagjs-js-after">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('set', 'linker', {"domains":["hack.gpl.jp"]} );
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "UA-199105184-1", {"anonymize_ip":true});</script> <link rel="https://api.w.org/" href="./../../../../wp-json/index.html">
+<link rel="alternate" type="application/json" href="./../../../../wp-json/wp/v2/posts/5943/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../../xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="./../../../../wp-includes/wlwmanifest.xml">
+<meta name="generator" content="WordPress 5.8.4">
+<link rel="canonical" href="./index.html">
+<link rel="shortlink" href="./../../../../index.html?p=5943">
+<link rel="alternate" type="application/json+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F08%2Ftermux_nginx_phpfpm_bench%2F">
+<link rel="alternate" type="text/xml+oembed" href="./../../../../wp-json/oembed/1.0/embed/index.html?url=https%3A%2F%2F%2F2020%2F09%2F08%2Ftermux_nginx_phpfpm_bench%2F&#038;format=xml">
+<meta name="generator" content="Site Kit by Google 1.48.1">
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">  <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2711753458083215" crossorigin="anonymous" type="text/javascript"></script> <style id="uagb-style-conditional-extension">@media (min-width: 1025px){body .uag-hide-desktop.uagb-google-map__wrap,body .uag-hide-desktop{display:none}}@media (min-width: 768px) and (max-width: 1024px){body .uag-hide-tab.uagb-google-map__wrap,body .uag-hide-tab{display:none}}@media (max-width: 767px){body .uag-hide-mob.uagb-google-map__wrap,body .uag-hide-mob{display:none}}</style>
+</head>  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161935417-3"></script> <script>window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161935417-3');</script> <body class="post-template-default single single-post postid-5943 single-format-standard has-sidebar has-header-image">
+<div id="page" class="hfeed site">
+<div id="widgets-wrapper" class="hide"><div id="secondary" class="wrap top-widget-area" role="complementary"><div id="sidebar-4" class="widget-area" role="complementary"><aside id="block-2" class="widget widget_block"><script async src="https://cse.google.com/cse.js?cx=df8210082ba786774"></script> <div class="gcse-search"></div></aside></div></div></div> <a class="skip-link screen-reader-text" href="#content">コンテンツへ移動</a><header id="masthead" class="site-header" role="banner"> <a class="site-logo" href="./../../../../index.html" title="JunkHack" rel="home noopener noreferrer" data-wpel-link="internal"> <img src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6/?s=80&#038;d=mm" width="80" height="80" alt="" class="no-grav header-image"> </a><div class="site-branding">
+<h1 class="site-title"><a href="./../../../../index.html" rel="home noopener noreferrer" data-wpel-link="internal">JunkHack</a></h1>
+<h2 class="site-description">アリエクでポチった JUNKHACK</h2>
+</div>
+<nav id="site-navigation" class="main-navigation" role="navigation"> <button class="menu-toggle toggle-button"><span class="screen-reader-text">メインメニュー</span></button><div class="menu-new-menu-container"><ul id="menu-new-menu" class="menu">
+<li id="menu-item-10686" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10686"><a href="./../../../../list/index.html" data-wpel-link="internal" rel="noopener noreferrer">List</a></li>
+<li id="menu-item-11016" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11016"><a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">CONTACT</a></li>
+<li id="menu-item-10671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10671"><a href="https://jh.gpl.jp/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer" class="wpel-icon-right">Mirror Netlify<span class="wpel-icon wpel-image wpel-icon-1"></span></a></li>
+</ul></div></nav><div class="toggle-wrapper"> <a href="#" class="widgets-toggle toggle-button" title="ウィジェット"> <span class="screen-reader-text">ウィジェット</span> </a>
+</div></header><div id="content" class="site-content"><div id="primary" class="content-area"><main id="main" class="site-main" role="main"><article id="post-5943" class="post-5943 post type-post status-publish format-standard hentry category-blog category-wordpress category-speeding-up"><div class="entry-wrapper">
+<header class="entry-header"> <span class="entry-format theme-genericon"></span><div class="entry-meta"> <span class="posted-on">投稿日: <a href="./index.html" rel="bookmark noopener noreferrer" data-wpel-link="internal"><time class="entry-date published updated" datetime="2020-09-08T04:48:02+09:00">2020年9月8日</time></a> </span><span class="posted-on">更新日:2020年9月8日</span> <span class="categories"> <a href="./../../../../category/blog/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">Blog</a>, <a href="./../../../../category/wordpress/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">WordPress</a>, <a href="./../../../../category/speeding-up/index.html" rel="category tag noopener noreferrer" data-wpel-link="internal">高速化</a></span>
+</div>
+<div class="flex"><h1 class="entry-title">スマホサーバの構成をNGINX+php-fpm+mariadbの構成にしてWordPressを動かして速度を計測しておいた</h1></div></header><div class="entry-content">
+<p>NGINXとphp-fpm構成にしてみました。いつもの<a href="https://www.webpagetest.org/" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">計測サイト<span class="wpel-icon wpel-image wpel-icon-1"></span></a>です。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_test_details_-_tokyo___jh_gpl_jp__-_09_08_20_04_17_28.png?w=940" alt="" class="wp-image-5945"></figure></div>
+<p>夜間のネットワークが一番空いている時なんで、速い感じでしょうか？</p>
+<p>GCP東京リージョンからの、apache ab は以下。182/sec　〜！速っ　78秒かかっていたテストが５．５秒。あ、これWordPressのキャッシュ効かせる前でしたね。apache構成でも同じ条件でサイド計測しておかないと。</p>
+<pre class="wp-block-code"><code>$ ab -n 1000 -c 100 http://jh.gpl.jp/
+：：
+Server Software:        nginx
+Server Hostname:        jh.gpl.jp
+Server Port:            80
+
+Document Path:          /
+Document Length:        15997 bytes
+
+Concurrency Level:      100
+Time taken for tests:   5.479 seconds
+Complete requests:      1000
+Failed requests:        0
+Total transferred:      16202000 bytes
+HTML transferred:       15997000 bytes
+Requests per second:    182.52 [#/sec] (mean)
+Time per request:       547.887 [ms] (mean)
+Time per request:       5.479 [ms] (mean, across all concurrent requests)
+Transfer rate:          2887.87 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       16   20   6.5     19     149
+Processing:    57  487  82.1    480     747
+Waiting:       39  467  82.0    460     724
+Total:         88  507  82.5    501     783
+
+Percentage of the requests served within a certain time (ms)
+  50%    501
+  66%    531
+  75%    544
+  80%    551
+  90%    578
+  95%    642
+  98%    702
+  99%    738
+ 100%    783 (longest request)</code></pre>
+<p>まだ、SSLとか設定はこれからでパラメータなども未調整です。設定値は以下のサイトを大いに参考にさせていただきました。</p>
+<blockquote class="wp-block-quote"><p><a href="https://worklog.be/archives/3222" target="_blank" rel="noreferrer noopener external" data-wpel-link="external" class="wpel-icon-right">NginxでWordPressを使う時の設定をまとめてみた<span class="wpel-icon wpel-image wpel-icon-1"></span></a></p></blockquote>
+<p>あとは、SSL設定をtermuxでどうやるかですね。自動化したいので、どんな感じの仕組みが動くんでしょうか。</p>
+<p>あ、それからRapid START CDNのフェイスブックチャットに応答があったんで、もう一度試してみるかもしれません。</p>
+<h2><span id="zhui_ji"> 追記</span></h2>
+<p>やっぱりWEBフォント読まないほうが速いんで、Autoptimizeで試験的にカットしてみました。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><img src="./../../../../wp-content/uploads/2020/09/webpagetest_test_details_-_tokyo___jh_gpl_jp__-_09_08_20_17_40_55.png?w=941" alt="" class="wp-image-5953"></figure></div>
+<p>読み込むものが少なくなれば、表示するのも速いですね。WEBフォントがなくなることで、多少文字の表示は意図したものと違うことになりますが、快適に読んでもらえるほうが良いと思うので、とりあえずはWEBフォントは外す方向で。</p>
+<p>あと、モバイル向けのスコアがかなり変わりました。</p>
+<div class="wp-block-image"><figure class="aligncenter size-large"><a href="https://developers.google.com/speed/pagespeed/insights/" data-wpel-link="external" target="_blank" rel="external noopener noreferrer"><img src="./../../../../wp-content/uploads/2020/09/pagespeed_insights.png?w=700" alt="" class="wp-image-5956"></a></figure></div>
+<p></p>
+<p>まぁ、そのうち気が変わるかもしれませんが。</p>
+</div>
+<footer class="entry-footer"></footer>
+</div></article><nav class="navigation post-navigation" role="navigation" aria-label="投稿"><h2 class="screen-reader-text">投稿ナビゲーション</h2>
+<div class="nav-links">
+<div class="nav-previous"><a href="./../../07/u-turn-nat/index.html" rel="prev noopener noreferrer" data-wpel-link="internal">ポートフォワードの経路で、Uターン NATとかヘアピンNATが使えないルータの場合のあれこれ</a></div>
+<div class="nav-next"><a href="./../../09/avatar-wordpress/index.html" rel="next noopener noreferrer" data-wpel-link="internal">アバター吹き出しをWordPressの自前ブログでやっと使える！</a></div>
+</div></nav><div id="comments" class="comments-area"><div class="comments-wrapper">
+<h2 class="comments-title"> 「<span>スマホサーバの構成をNGINX+php-fpm+mariadbの構成にしてWordPressを動かして速度を計測しておいた</span>」への2件のフィードバック</h2>
+<ol class="comment-list">
+<li class="comment even thread-even depth-1" id="li-comment-113"><article id="comment-113" class="comment"><footer class="comment-meta"><div class="comment-author vcard"> <img alt="" src="https://secure.gravatar.com/avatar/24864ac2443d5a376e5e5d25a8347f66?s=42&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/24864ac2443d5a376e5e5d25a8347f66?s=84&#038;d=mm&#038;r=g 2x" class="avatar avatar-42 photo" height="42" width="42" loading="lazy"> <b class="fn"> メロン <span class="says">より:</span> </b>
+</div>
+<div class="comment-metadata"> <a href="./index.html#comment-113" data-wpel-link="internal" rel="noopener noreferrer"><time datetime="2021-05-10T17:41:15+09:00"> 2021年5月10日 5:41 PM </time></a>
+</div></footer><div class="comment-content">
+<p>はじめまして！<br> おもしろい記事ですね。</p>
+<p>自分も試したくなり、早速やってみましたが、nginxやphp-fpmのコンフィグがよくないのか、うまく動きません。。<br> php-fpmの設定例とか記事にされる予定はありますでしょうか？</p>
+</div></article></li>
+<li class="comment byuser comment-author-junkhack bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-114"><article id="comment-114" class="comment"><footer class="comment-meta"><div class="comment-author vcard"> <img alt="" src="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6?s=42&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/997681319c3cbb0bdcca95770d5edaa6?s=84&#038;d=mm&#038;r=g 2x" class="avatar avatar-42 photo" height="42" width="42" loading="lazy"> <b class="fn"> <a href="./../../../../index.html" rel="external nofollow ugc noopener noreferrer" class="url wpel-icon-right" data-wpel-link="external" target="_blank">JunkHack<span class="wpel-icon wpel-image wpel-icon-1"></span></a> <span class="says">より:</span> </b>
+</div>
+<div class="comment-metadata"> <a href="./index.html#comment-114" data-wpel-link="internal" rel="noopener noreferrer"><time datetime="2021-05-11T06:42:31+09:00"> 2021年5月11日 6:42 AM </time></a>
+</div></footer><div class="comment-content">
+<p>メロンさん、こんにちわ！</p>
+<p>今度、Pixel3からUmidigiF2に一時的に引っ越すのでその時に設定内容とか纏めてみますね。<br> 少々お待ちください。Termuxってほんと面白いです。</p>
+</div></article></li>
+</ol>
+<p class="no-comments">コメントは受け付けていません。</p>
+</div></div></main></div></div>
+<footer id="colophon" class="site-footer wrap" role="contentinfo"><div class="site-info"> Copyleft - all rights reversed. <span class="sep"> | </span> JunkHack 2011 - 2022 <span class="sep"> | </span> <a href="./../../../../about-junkhack/index.html" data-wpel-link="internal" rel="noopener noreferrer">運営者情報<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../mail/index.html" data-wpel-link="internal" rel="noopener noreferrer">お問い合わせ<span class="gf"></span></a><span class="sep"> | </span> <a href="./../../../../privacy/index.html" data-wpel-link="internal" rel="noopener noreferrer">プライバシーポリシー<span class="gf"></span></a>
+</div></footer>
+</div>
+<div id="wpfront-scroll-top-container"> <img src="./../../../../wp-content/plugins/wpfront-scroll-top/images/icons/1.png" alt="">
+</div> <script type="text/javascript">function wpfront_scroll_top_init() {
+                if (typeof wpfront_scroll_top === "function" && typeof jQuery !== "undefined") {
+                    wpfront_scroll_top({"scroll_offset":100,"button_width":0,"button_height":0,"button_opacity":0.8,"button_fade_duration":200,"scroll_duration":400,"location":1,"marginX":20,"marginY":20,"hide_iframe":false,"auto_hide":false,"auto_hide_after":2,"button_action":"top","button_action_element_selector":"","button_action_container_selector":"html, body","button_action_element_offset":0});
+                } else {
+                    setTimeout(wpfront_scroll_top_init, 100);
+                }
+            }
+            wpfront_scroll_top_init();</script> <script type="text/javascript" src="./../../../../wp-content/themes/hew-wpcom/js/contact.js?ver=20210612" id="sendmail-js"></script> <script defer src="./../../../../wp-content/cache/autoptimize/js/autoptimize_f9042458c0fee7d42884c6f497291920.js"></script>
+</body>
+</html>

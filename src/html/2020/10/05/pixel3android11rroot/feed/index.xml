@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Pixel3・android11(R)正式リリース版でroot化！ へのコメント	</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>アリエクでポチった JUNKHACK</description>
+	<lastBuildDate>Sun, 04 Jul 2021 12:17:42 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.4</generator>
+	<item>
+		<title>
+		JunkHack より		</title>
+		<link>./../index.html#comment-112</link>
+
+		<dc:creator><![CDATA[JunkHack]]></dc:creator>
+		<pubDate>Sat, 14 Nov 2020 08:14:09 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=9758#comment-112</guid>
+
+					<description><![CDATA[root化、おめでとうございます。
+ご指摘の点、ありがとうございます。今度、追記しておきますね。]]></description>
+			<content:encoded><![CDATA[<p>root化、おめでとうございます。<br />
+ご指摘の点、ありがとうございます。今度、追記しておきますね。</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		匿名 より		</title>
+		<link>./../index.html#comment-111</link>
+
+		<dc:creator><![CDATA[匿名]]></dc:creator>
+		<pubDate>Sat, 14 Nov 2020 02:01:13 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=9758#comment-111</guid>
+
+					<description><![CDATA[詳しい解説記事をありがとうございます&lt;br /&gt;
+初めてでしたが、おかげさまでroot化成功しました！
+
+初心者の私がつまずいた点をメモとして残します。
+
+・Magiskマネージャーは設定→更新チャンネルをβ版に変更する必要がありました(2020/11/14現在)
+
+・半角スペース忘れないこと→例：fastboot flash bootloader&#060;半角スペース&#062;&#060;ファイルパス&#062;]]></description>
+			<content:encoded><![CDATA[<p>詳しい解説記事をありがとうございます<br />
+初めてでしたが、おかげさまでroot化成功しました！</p>
+<p>初心者の私がつまずいた点をメモとして残します。</p>
+<p>・Magiskマネージャーは設定→更新チャンネルをβ版に変更する必要がありました(2020/11/14現在)</p>
+<p>・半角スペース忘れないこと→例：fastboot flash bootloader&lt;半角スペース&gt;&lt;ファイルパス&gt;</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		匿名 より		</title>
+		<link>./../index.html#comment-110</link>
+
+		<dc:creator><![CDATA[匿名]]></dc:creator>
+		<pubDate>Sat, 14 Nov 2020 01:57:06 +0000</pubDate>
+		<guid isPermaLink="false">./../../../../../index.html?p=9758#comment-110</guid>
+
+					<description><![CDATA[詳しい解説記事をありがとうございます
+初めてでしたが、おかげさまでroot化成功しました。
+
+初心者の私がつまずいた点を、他の初心者のため残します。
+
+・Magiskマネージャーはインストール後、設定→更新チャンネルをβ版に変更する必要あり(2020/11/14現在)
+・ファイルをPCから送るときはコマンドの後に半角スペース必要 （fastboot flash bootloader）]]></description>
+			<content:encoded><![CDATA[<p>詳しい解説記事をありがとうございます<br />
+初めてでしたが、おかげさまでroot化成功しました。</p>
+<p>初心者の私がつまずいた点を、他の初心者のため残します。</p>
+<p>・Magiskマネージャーはインストール後、設定→更新チャンネルをβ版に変更する必要あり(2020/11/14現在)<br />
+・ファイルをPCから送るときはコマンドの後に半角スペース必要 （fastboot flash bootloader）</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>
