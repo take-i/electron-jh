@@ -7,7 +7,7 @@
   "author": "https://hack.gpl.jp/",
   "license": "MIT",
   "scripts": {
-    "start": "electron ./src",
+    "start": "electron ./",
     "mac": "electron-packager ./ JunkHack --icon=assets/mac/icon_mac.icns --platform=darwin --arch=x64 --overwrite",
     "win": "electron-packager ./ JunkHack --icon=assets/win/icon_win.icns --platform=win32 --arch=x64 --overwrite",
     "pack:mac": "electron-builder --mac --x64",

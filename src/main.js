@@ -41,6 +41,11 @@ const templateMenu = [
             accelerator: 'CmdOrCtrl+O',
             click: () => { createWindow() }
         },
+        {
+          label: '検索',
+          accelerator: 'CmdOrCtrl+F',
+          click: () => { createWindow2() }
+      },
     ]
   },
   {
@@ -59,7 +64,8 @@ const templateMenu = [
               role: 'paste',
               label: '貼り付け'
           },
-          {role:'selectAll', label:'すべてを選択'}
+          {role:'selectAll', label:'すべてを選択'},
+          {role:'find', label:'すべてを選択'}
       ]
   },
   {
@@ -138,6 +144,34 @@ const createWindow = () => {
   // メインウィンドウに表示するURLを指定します
   // （今回はmain.jsと同じディレクトリのindex.html）
   mainWindow.loadFile('./src/html/index.html');
+
+  // デベロッパーツールの起動
+  // mainWindow.webContents.openDevTools();
+
+  // メインウィンドウが閉じられたときの処理
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
+}
+
+const createWindow2 = () => {
+  // メインウィンドウを作成します
+  mainWindow = new BrowserWindow({
+    // webPreferences: {
+    //   nodeIntegration: true,
+    //   contextIsolation: false
+    // },
+    webPreferences: {
+      // プリロードスクリプトは、レンダラープロセスが読み込まれる前に実行され、
+      // レンダラーのグローバル（window や document など）と Node.js 環境の両方にアクセスできます。
+      preload: path.join(__dirname, "preload.js"),
+    },
+    width: 1500, height: 850,
+  });
+
+  // メインウィンドウに表示するURLを指定します
+  // （今回はmain.jsと同じディレクトリのindex.html）
+  mainWindow.loadFile('./src/html/s.html');
 
   // デベロッパーツールの起動
   // mainWindow.webContents.openDevTools();
